@@ -10,9 +10,9 @@
 
 
 	<mvc:annotation-driven />
-	<context:component-scan base-package="edu.mum.controller" />
-	<context:component-scan base-package="edu.mum.formatter" />
-	<context:component-scan base-package="edu.mum.serviceimpl" />
+	<context:component-scan base-package="mum.waa.coffee.controller" />
+	<context:component-scan base-package="mum.waa.coffee.formatter" />
+	<context:component-scan base-package="mum.waa.coffee.serviceimpl" />
  	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />
