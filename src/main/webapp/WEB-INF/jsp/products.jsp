@@ -7,31 +7,31 @@
 <title>Products</title>
 </head>
 <body>
- 	<table class="zebra"> 
+	<table class="zebra">
 		<col>
 		<col>
 		<col>
 		<col>
-		<thead> 
-		<tr> 
-		    <th>ID</th> 
-		    <th>Name</th> 
-		    <th>Description</th> 
-		    <th>Category</th> 
-		    <th>Price</th> 
-		</tr> 
-		</thead> 
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Category</th>
+				<th>Price</th>
+			</tr>
+		</thead>
 		<tbody>
-		<c:forEach items="${products}" var="product">
-			<tr> 
-			    <td>${product.id}</td> 
-			    <td>${product.productName}</td> 
-			    <td>${product.description}</td> 
-			    <td>${product.productType}</td> 
-			    <td>${product.price}</td> 
-			</tr> 
-		</c:forEach>
-		</tbody> 
-		</table> 
+			<c:forEach items="${products}" var="product">
+				<tr>
+					<td>${product.id}</td>
+					<td>${product.productName}</td>
+					<td>${product.description}</td>
+					<td>${product.productType}</td>
+					<td>${product.price}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 </body>
 </html>
