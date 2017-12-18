@@ -13,14 +13,22 @@
 
 <title><tiles:insertAttribute name="title" /></title>
 
-<link href="http://getbootstrap.com/dist/css/bootstrap.css"	rel="stylesheet">
-
 <style type="text/css">@import url(css/main.css);</style>
 
 </head>
-
 <body>
+<div id="header">
+	CoffeeShop
+	<tiles:insertAttribute name="navigation" />
+</div>
+<div id="content">
+	<tiles:insertAttribute name="body" />
+</div>
+<div id="footer">
+	 <tiles:insertAttribute name="footer" />
+</div>
 
+<%-- 
 	<div class="container">
 		<div class="header">
 			<ul class="nav nav-pills pull-right">
@@ -46,6 +54,6 @@
 			<tiles:insertAttribute name="footer" />
 		</div>
 
-	</div>
+	</div> --%>
 </body>
 </html>

@@ -30,3 +30,21 @@ target/m2e-wtp/web-resources/META-INF/maven/mum.waa/TheCoffeeShop/pom.xml
 target/m2e-wtp/web-resources/META-INF/maven/mum.waa/TheCoffeeShop/pom.properties
 
 target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+
+target/classes/mum/waa/coffee/exception/HttpNotFoundErrorException.class
+
+target/classes/mum/waa/coffee/exception/UsernameTakenException.class
+
+target/classes/mum/waa/coffee/repository/PersonRepository.class
+
+target/classes/mum/waa/coffee/repository/RoleRepository.class
+
+target/classes/mum/waa/coffee/repository/ProductRepository.class
+
+target/m2e-wtp/web-resources/META-INF/maven/mum.waa/TheCoffeeShop/pom.properties
+
+target/m2e-wtp/web-resources/META-INF/maven/mum.waa/TheCoffeeShop/pom.xml
+
+target/classes/mum/waa/coffee/service/PersonService.class
+
+*.class

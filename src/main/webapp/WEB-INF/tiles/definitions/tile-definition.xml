@@ -6,8 +6,6 @@
 	
 	<definition name="baseLayout" template="/WEB-INF/tiles/templates/layoutTemplate.jsp">
 		<put-attribute name="title" value="Sample Title" />
-		<put-attribute name="heading" value="" />
-		<put-attribute name="tagline" value="" />
  		<put-attribute name="navigation" value="/WEB-INF/tiles/templates/navigation.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/templates/footer.jsp" />
@@ -15,35 +13,26 @@
 
  	<definition name="welcome" extends="baseLayout">
 		<put-attribute name="title" value="Welcome" />
-		<put-attribute name="heading" value="Internationalization" />
  		<put-attribute name="body" value="/WEB-INF/jsp/products.jsp" />
 	</definition>
 	
 	<definition name="products" extends="baseLayout">
 		<put-attribute name="title" value="Products" />
-		<put-attribute name="heading" value="Products" />
-		<put-attribute name="tagline" value="Available Products" />
 		<put-attribute name="body" value="/WEB-INF/jsp/products.jsp" />
 	</definition>
 	
 	<definition name="product" extends="baseLayout">
 		<put-attribute name="title" value="Product" />
-		<put-attribute name="heading" value="Products" />
-		<put-attribute name="tagline" value="Product" />
 		<put-attribute name="body" value="/WEB-INF/jsp/product.jsp" />
 	</definition>
 	
 	<definition name="addProduct" extends="baseLayout">
 		<put-attribute name="title" value="Products" />
-		<put-attribute name="heading" value="Products" />
-		<put-attribute name="tagline" value="Product" />
 		<put-attribute name="body" value="/WEB-INF/jsp/addProduct.jsp" />
 	</definition>
 	
 	<definition name="login" extends="baseLayout">
 		<put-attribute name="title" value="Login" />
-		<put-attribute name="heading" value="Login" />
-		<put-attribute name="tagline" value="Enter your Credentials" />
 		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
 	</definition>
 	 	
