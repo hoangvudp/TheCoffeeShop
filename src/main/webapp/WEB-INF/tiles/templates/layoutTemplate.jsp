@@ -15,7 +15,7 @@
 
 <link href="http://getbootstrap.com/dist/css/bootstrap.css"	rel="stylesheet">
 
-<link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css"	rel="stylesheet">
+<style type="text/css">@import url(css/main.css);</style>
 
 </head>
 
@@ -26,7 +26,7 @@
 			<ul class="nav nav-pills pull-right">
 				<tiles:insertAttribute name="navigation" />
 			</ul>
-			<h3 class="text-muted">Web Store</h3>
+			<h3 class="text-muted">Coffee Shop</h3>
 		</div>
 
 		<div class="jumbotron">

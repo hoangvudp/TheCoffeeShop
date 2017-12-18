@@ -1,4 +1,4 @@
-package mum.waa.coffee.serviceimpl;
+package mum.waa.coffee.service.impl;
 
 import mum.waa.coffee.domain.Product;
 import mum.waa.coffee.domain.ProductType;

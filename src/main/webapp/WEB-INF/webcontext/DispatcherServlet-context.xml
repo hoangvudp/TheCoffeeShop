@@ -9,10 +9,10 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 
-	<mvc:annotation-driven />
-	<context:component-scan base-package="mum.waa.coffee.controller" />
+	<mvc:annotation-driven validator="validator"/>
+	<context:component-scan base-package="mum.waa.coffee" />
 	<context:component-scan base-package="mum.waa.coffee.formatter" />
-	<context:component-scan base-package="mum.waa.coffee.serviceimpl" />
+	<context:component-scan base-package="mum.waa.coffee.service.impl" />
  	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />
@@ -28,7 +28,7 @@
 	<mvc:resources location="/js/" mapping="/js/**" />
 	<mvc:resources location="/css/" mapping="/css/**" />
  
- 	<bean id="tilesViewResolver"   class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+ 	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
         <property name="order" value="-2" />
 	</bean>
@@ -39,5 +39,8 @@
                 <value>/WEB-INF/tiles/definitions/tile-definition.xml</value>
             </list>
         </property>
+	</bean>
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="validationMessageSource" ref="messageSource" />
 	</bean>
  </beans>

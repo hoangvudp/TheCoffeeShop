@@ -1,4 +1,4 @@
-package mum.waa.coffee.serviceimpl;
+package mum.waa.coffee.service.impl;
 
 import mum.waa.coffee.domain.Person;
 import mum.waa.coffee.domain.Role;
@@ -17,23 +17,24 @@ import java.util.List;
 @Service
 @Transactional
 public class PersonServiceImpl implements PersonService {
-    private final PersonRepository personRepository;
-    private final PasswordEncoder passwordEncoder;
+	@Autowired
+    private PersonRepository personRepository;
+//    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public PersonServiceImpl(PersonRepository personRepository, PasswordEncoder passwordEncoder) {
-        this.personRepository = personRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+//    @Autowired
+//    public PersonServiceImpl(PersonRepository personRepository, PasswordEncoder passwordEncoder) {
+//        this.personRepository = personRepository;
+//        this.passwordEncoder = passwordEncoder;
+//    }
 
     public List<Person> getAllPersons() {
         return (List<Person>) personRepository.findAll();
     }
 
     public Person savePerson(Person person) {
-        if (person.getPassword() != null && !person.getPassword().isEmpty()) {
-            person.setEncryptedPassword(passwordEncoder.encode(person.getPassword()));
-        }
+//        if (person.getPassword() != null && !person.getPassword().isEmpty()) {
+//            person.setEncryptedPassword(passwordEncoder.encode(person.getPassword()));
+//        }
         return personRepository.save(person);
     }
 

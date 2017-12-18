@@ -1,4 +1,4 @@
-package mum.waa.coffee.serviceimpl;
+package mum.waa.coffee.service.impl;
 
 import java.util.Date;
 import java.util.List;
