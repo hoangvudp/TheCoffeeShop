@@ -21,6 +21,20 @@ div.languageBar {
 	float: right;
 }
 
+div.navigationBar {
+	float: right;
+	clear: left;
+}
+
+div.footer {
+	text-align: center;
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow:hidden;
+}
+
 /* #global {
     text-align: left;
     border: 1px solid #dedede;

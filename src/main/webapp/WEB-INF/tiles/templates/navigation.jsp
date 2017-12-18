@@ -1,12 +1,15 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<div class="languageBar">
-	Language : <a href="?language=en_US">English</a> | <a href="?language=vi_VN">Vietnamese</a>
+<div class="navigationBar">
+  	<a href="<spring:url value="/welcome"/>"><spring:message code="navigation.home"/></a>&nbsp;&nbsp;
+	<a href="<spring:url value="/welcome"/>"><spring:message code="navigation.placeOrder"/></a>&nbsp;&nbsp;
+	<a href="<spring:url value="/welcome"/>"><spring:message code="navigation.addProduct"/></a>&nbsp;&nbsp;
 </div>
-
-<ul>
-  <li><a href="<spring:url value="/welcome"/>">Home</a></li>
-	<li><a href="<spring:url value="/welcome"/>">Place Order</a></li>
-	<li><a href="<spring:url value="/welcome"/>">Add Product</a></li>
-</ul>
+<br>
+<br>
+<div class="languageBar">
+	<a href="?language=en_US">English</a> | <a href="?language=vi_VN">Vietnamese</a>
+</div>
+<br>
+<br>
 
