@@ -17,6 +17,10 @@ tbody tr:hover {
 	background: #F8F8FF;
 }
 
+div.languageBar {
+	float: right;
+}
+
 /* #global {
     text-align: left;
     border: 1px solid #dedede;

@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Products</title>
 </head>
 <body>
@@ -15,10 +15,10 @@
 		<thead>
 			<tr>
 				<th>ID</th>
-				<th>Name</th>
-				<th>Description</th>
-				<th>Category</th>
-				<th>Price</th>
+				<th><spring:message code="products.table.header.name"/></th>
+				<th><spring:message code="products.table.header.description"/></th>
+				<th><spring:message code="products.table.header.category"/></th>
+				<th><spring:message code="products.table.header.price"/></th>
 			</tr>
 		</thead>
 		<tbody>
