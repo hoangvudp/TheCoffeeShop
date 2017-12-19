@@ -10,13 +10,19 @@ INSERT INTO coffeeshop.person (email, enable, encryptedPassword, firstName, last
 INSERT INTO coffeeshop.person_role (person_id, role_id) VALUES (1, 1);
 INSERT INTO coffeeshop.person_role (person_id, role_id) VALUES (2, 2);
 
-INSERT INTO coffeeshop.product (description, price, productName, productType) VALUES ('', 2.3, 'Pancakes', 'BREAKFAST');
-INSERT INTO coffeeshop.product (description, price, productName, productType) VALUES ('', 1.5, 'Crumb Topped Banana', 'BREAKFAST');
-INSERT INTO coffeeshop.product (description, price, productName, productType) VALUES ('', 3.4, 'Easy Breakfast Casserole', 'BREAKFAST');
-INSERT INTO coffeeshop.product (description, price, productName, productType) VALUES ('', 4, 'The Bestest Belgian Waffles', 'BREAKFAST');
-INSERT INTO coffeeshop.product (description, price, productName, productType) VALUES ('', 5.8, 'Spiced Butternut Squash Soup', 'LUNCH');
-INSERT INTO coffeeshop.product (description, price, productName, productType) VALUES ('', 4.8, 'Tomato Bacon Grilled Cheese', 'LUNCH');
-INSERT INTO coffeeshop.product (description, price, productName, productType) VALUES ('', 5.3, 'Philly Cheesteak Sandwich with Garlic Mayo', 'LUNCH');
-INSERT INTO coffeeshop.product (description, price, productName, productType) VALUES ('', 8.1, 'Pork Marsala', 'DINNER');
-INSERT INTO coffeeshop.product (description, price, productName, productType) VALUES ('', 7.3, 'Pasta Pomodoro', 'DINNER');
-INSERT INTO coffeeshop.product (description, price, productName, productType) VALUES ('', 7.5, 'Fresh Tomato Shrimp Pasta', 'DINNER');
+INSERT INTO coffeeshop.productcategory (name) VALUES ("Breakfast");
+INSERT INTO coffeeshop.productcategory (name) VALUES ("Lunch");
+INSERT INTO coffeeshop.productcategory (name) VALUES ("Dinner");
+INSERT INTO coffeeshop.productcategory (name) VALUES ("Drink");
+INSERT INTO coffeeshop.productcategory (name) VALUES ("Dessert");
+
+INSERT INTO coffeeshop.product (description, price, productName, category_id) VALUES ('', 2.3, 'Pancakes', 1);
+INSERT INTO coffeeshop.product (description, price, productName, category_id) VALUES ('', 1.5, 'Crumb Topped Banana', 1);
+INSERT INTO coffeeshop.product (description, price, productName, category_id) VALUES ('', 3.4, 'Easy Breakfast Casserole', 1);
+INSERT INTO coffeeshop.product (description, price, productName, category_id) VALUES ('', 4, 'The Bestest Belgian Waffles', 1);
+INSERT INTO coffeeshop.product (description, price, productName, category_id) VALUES ('', 5.8, 'Spiced Butternut Squash Soup', 2);
+INSERT INTO coffeeshop.product (description, price, productName, category_id) VALUES ('', 4.8, 'Tomato Bacon Grilled Cheese', 2);
+INSERT INTO coffeeshop.product (description, price, productName, category_id) VALUES ('', 5.3, 'Philly Cheesteak Sandwich with Garlic Mayo', 2);
+INSERT INTO coffeeshop.product (description, price, productName, category_id) VALUES ('', 8.1, 'Pork Marsala', 3);
+INSERT INTO coffeeshop.product (description, price, productName, category_id) VALUES ('', 7.3, 'Pasta Pomodoro', 3);
+INSERT INTO coffeeshop.product (description, price, productName, category_id) VALUES ('', 7.5, 'Fresh Tomato Shrimp Pasta', 3);

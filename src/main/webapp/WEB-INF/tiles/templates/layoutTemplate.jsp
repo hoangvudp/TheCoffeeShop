@@ -18,7 +18,7 @@
 </head>
 <body>
 <div id="header">
-	CoffeeShop
+	<h3 class="heading">CoffeeShop</h3>
 	<tiles:insertAttribute name="navigation" />
 </div>
 <div id="content">

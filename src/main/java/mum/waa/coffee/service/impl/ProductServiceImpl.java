@@ -1,7 +1,7 @@
 package mum.waa.coffee.service.impl;
 
 import mum.waa.coffee.domain.Product;
-import mum.waa.coffee.domain.ProductType;
+import mum.waa.coffee.domain.ProductCategory;
 import mum.waa.coffee.repository.ProductRepository;
 import mum.waa.coffee.service.ProductService;
 
@@ -45,8 +45,8 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findByPriceBetween(minPrice, maxPrice);
     }
 
-    public List<Product> findByProductType(ProductType productType) {
-        return productRepository.findByProductType(productType);
+    public List<Product> findByProductCategory(ProductCategory productCategory) {
+        return productRepository.findByProductCategory(productCategory);
     }
 
 }

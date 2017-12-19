@@ -19,19 +19,28 @@
 				<th><spring:message code="products.table.header.description"/></th>
 				<th><spring:message code="products.table.header.category"/></th>
 				<th><spring:message code="products.table.header.price"/></th>
+				<th></th> <!-- TODO: check authz -->
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${products}" var="product">
 				<tr>
 					<td>${product.id}</td>
-					<td>${product.productName}</td>
+					<td>
+						<a href="<spring:url value='/products/${product.id}'/>">${product.productName}</a>
+					</td>
 					<td>${product.description}</td>
-					<td>${product.productType}</td>
+					<td>${product.productCategory.name}</td>
 					<td>${product.price}</td>
+					<!-- TODO: check authz -->
+					<td>
+						<a href="<spring:url value='/products/edit/${product.id}'/>"><spring:message code="products.table.row.edit"/></a>&nbsp;&nbsp;
+						<a href="<spring:url value='/products/delete/${product.id}'/>"><spring:message code="products.table.row.delete"/></a>
+					</td> 
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<p><a href="<spring:url value="/products/add"/>"><spring:message code="products.addnew"/></a></p>
 </body>
 </html>
