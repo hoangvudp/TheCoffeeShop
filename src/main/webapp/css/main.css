@@ -17,6 +17,10 @@ tbody tr:hover {
 	background: #F8F8FF;
 }
 
+span.heading {
+	font-size: 50px;
+}
+
 div.languageBar {
 	float: right;
 }
@@ -26,6 +30,10 @@ div.navigationBar {
 }
 
 div.authenticationBar {
+	float: right;
+}
+
+#logoutForm {
 	float: right;
 }
 
@@ -55,7 +63,7 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-input #btnLogin {
+input[type=submit]#btnLogin {
     width: 100%;
     background-color: #4CAF50;
     color: white;

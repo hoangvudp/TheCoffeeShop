@@ -1,5 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
@@ -19,7 +20,9 @@
 				<th><spring:message code="products.table.header.description"/></th>
 				<th><spring:message code="products.table.header.category"/></th>
 				<th><spring:message code="products.table.header.price"/></th>
-				<th></th> <!-- TODO: check authz -->
+				<security:authorize access="hasRole('ROLE_ADMIN')">
+					<th><spring:message code="products.table.header.actions"/></th>
+				</security:authorize>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,15 +35,15 @@
 					<td>${product.description}</td>
 					<td>${product.productCategory.name}</td>
 					<td>${product.price}</td>
-					<!-- TODO: check authz -->
-					<td>
+					<security:authorize access="hasRole('ROLE_ADMIN')">
+					  <td>
 						<a href="<spring:url value='/products/edit/${product.id}'/>"><spring:message code="products.table.row.edit"/></a>&nbsp;&nbsp;
 						<a href="<spring:url value='/products/delete/${product.id}'/>"><spring:message code="products.table.row.delete"/></a>
-					</td> 
+					  </td> 
+					</security:authorize>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<p><a href="<spring:url value="/products/add"/>"><spring:message code="products.addnew"/></a></p>
 </body>
 </html>

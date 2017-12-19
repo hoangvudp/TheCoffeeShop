@@ -16,8 +16,7 @@
 			</h3>
 			<c:if test="${not empty error}">
 				<div class="errors">
-					<spring:message
-						code="AbstractUserDetailsAuthenticationProvider.badCredentials" />
+					<spring:message code="AbstractUserDetailsAuthenticationProvider.badCredentials" />
 					<br />
 				</div>
 			</c:if>
@@ -31,10 +30,13 @@
 					<input placeholder="${passwordPlaceholder}" name='password' type="password" value="">
 				</div>
 				<div class="form-group">
-			    		<input type='checkbox' name="keepMe"/>Remember Me? <br/>	
+					<spring:message code="login.rememberMe" var="rememberMe" />
+			    		<input type='checkbox' name="keepMe"/>${rememberMe}<br/><br>
 			    	</div>
-			    	<spring:message code="login.loginBtnTitle" var="loginBtnTitle" />
-				<input id='btnLogin' type="submit" value="${loginBtnTitle}">
+			    	<div class="form-group">
+			    		<spring:message code="login.loginBtnTitle" var="loginBtnTitle" />
+					<input id='btnLogin' type="submit" value="${loginBtnTitle}">
+				</div>
 				<security:csrfInput />
 			</form>
 		</div>
