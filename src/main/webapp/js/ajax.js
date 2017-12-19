@@ -3,55 +3,23 @@
 // [0] has "" as a result of split 
 var contextRoot = "/" + window.location.pathname.split('/')[1];
 
-function phoneSubmit() {
-	var sendToSend = JSON.stringify(serializeObject($('#phoneForm')));
+function categorySubmit() {
+	var sendToSend = JSON.stringify(serializeObject($('#categoryForm')));
 	$.ajax({
-		url : contextRoot + '/addPhones',
+		url : contextRoot + '/categories/add',
 		type : 'POST',
 		dataType : "json", // Accepts
 		data : sendToSend,
 		contentType : 'application/json', // Sends
-		success : function(phone) {
-
-			var newRow = '<tr><td>&nbsp;</td><td>' + phone.areaCode + ' '
-					+ phone.prefix + ' ' + phone.number + '</td></tr>';
-
-			$("#phones").append(newRow);
-			resetForm('phoneForm');
+		success : function(category) {
+			var newOption = "<option value='" + category.id + "' selected>" + category.name + "</option>";
+			$("#categories").append(newOption);
+			resetForm('categoryForm');
 		},
 
 		error : function(jqXHR, textStatus, exception) {
-
 			alert(jqXHR.responseJSON.message);
-
 		}
-
-	});
-}
-
-function addressSubmit() {
-	var sendToSend = JSON.stringify(serializeObject($('#addressForm')));
-	$.ajax({
-		url : contextRoot + '/addAddresses',
-		type : 'POST',
-		dataType : "json", // Accepts
-		data : sendToSend,
-		contentType : 'application/json', // Sends
-		success : function(address) {
-
-			var newRow = '<p>' + address.street + ' ' + address.city + ' '
-					+ address.state + ' ' + address.zipCode + '</p>';
-
-			$("#addresses").append(newRow);
-			resetForm('addressForm');
-		},
-
-		error : function(jqXHR, textStatus, exception) {
-
-			alert(jqXHR.responseJSON.message);
-
-		}
-
 	});
 }
 

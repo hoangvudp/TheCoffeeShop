@@ -50,8 +50,8 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/add")
-	public String addProduct(Model model) {
-		model.addAttribute("product", new Product());
+	public String addProduct(Model model, Product product, ProductCategory productCategory) {
+//		model.addAttribute("product", new Product());
 		return "editProduct";
 	}
 	
@@ -68,7 +68,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/edit/{id}")
-	public String editProduct(@PathVariable("id") Long id, Model model) {
+	public String editProduct(@PathVariable("id") Long id, Model model, ProductCategory productCategory) {
 		Product product = productService.getProduct(id);
 		model.addAttribute("product", product);
 		return "editProduct";

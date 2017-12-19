@@ -13,7 +13,8 @@
 
 <title><tiles:insertAttribute name="title" /></title>
 
-<style type="text/css">@import url(css/main.css);</style>
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/main.css"/>">
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/rest.css"/>">
 
 </head>
 <body>
@@ -28,32 +29,5 @@
 	 <tiles:insertAttribute name="footer" />
 </div>
 
-<%-- 
-	<div class="container">
-		<div class="header">
-			<ul class="nav nav-pills pull-right">
-				<tiles:insertAttribute name="navigation" />
-			</ul>
-			<h3 class="text-muted">Coffee Shop</h3>
-		</div>
-
-		<div class="jumbotron">
-			<h1>
-				<tiles:insertAttribute name="heading" />
-			</h1>
-			<p>
-				<tiles:insertAttribute name="tagline" />
-			</p>
-		</div>
-
-		<div class="row">
-			<tiles:insertAttribute name="body" />
-		</div>
-
-		<div class="footer">
-			<tiles:insertAttribute name="footer" />
-		</div>
-
-	</div> --%>
 </body>
 </html>
