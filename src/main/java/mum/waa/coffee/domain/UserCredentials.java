@@ -12,15 +12,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity(name = "Credentials")
 public class UserCredentials {
 
 	@Id
 	@Column(nullable = false, unique = true)
+	@NotEmpty
 	String username;
+	
 	@Column(nullable = false)
+	@NotEmpty
 	String password;
+	
 	@Transient
+	@NotEmpty(groups = UserCredentials.class)
 	String verifyPassword;
 	Boolean enabled;
 
@@ -66,5 +73,9 @@ public class UserCredentials {
 
 	public void setAuthority(List<Authority> authority) {
 		this.authority = authority;
+	}
+	
+	public void addAuthority(Authority authority) {
+		this.authority.add(authority);
 	}
 }

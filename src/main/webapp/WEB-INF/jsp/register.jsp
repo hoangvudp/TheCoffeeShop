@@ -8,54 +8,62 @@
     <title>Register</title>
   </head>
   <body>
-	<div class="container">
-		<div>Register</div>
-		<form:form modelAttribute="member" class="form-horizontal"
-			action="/register" method="post">
-			<form:errors path="*" cssClass="errors" element="div" />
-
+	<div id="outer">
+		<div id="inner">
+		<h4>
+			<spring:message code="register.registerTitle" />
+		</h4>
+		
+		<spring:url value='/register' var="registerAction"></spring:url>
+		<form:form modelAttribute="member" action="${registerAction}" method="post">
 			<div class="input-group">
-				<label for="username"><spring:message
-						code="register.username" /></label>
-				<form:input id="username" path="userCredentials.username"
-					type="text" class="form:input-large" />
-				<form:errors path="userCredentials.username" cssClass="errors" />
+				<spring:message code="username" var="username" />
+				<label for="username">${username}</label>
+				<div class="errors">
+					<form:errors path="userCredentials.username" />
+				</div>
+				<form:input placeHolder="${username}" id="username" path="userCredentials.username" type="text" />
 			</div>
 
 			<div class="input-group">
-				<label for="password"><spring:message
-						code="register.password" /></label>
-				<form:input id="password" path="userCredentials.password"
-					type="text" class="form:input-large" />
-				<form:errors path="userCredentials.password" cssClass="errors" />
+				<spring:message code="password" var="password" />
+				<label for="password">${password}</label>
+				<div class="errors">
+					<form:errors path="userCredentials.password" />
+				</div>
+				
+				<form:input placeHolder="${password}" id="password" path="userCredentials.password" type="text" />
 			</div>
 
 			<div class="input-group">
-				<label for="username"><spring:message
-						code="register.password" /></label>
-				<form:input id="email" path="email" type="text"
-					class="form:input-large" />
-				<form:errors path="email" cssClass="errors" />
+				<spring:message code="register.verifyPassword" var="verifyPassword" />
+				<label for="verifyPassword">${verifyPassword}</label>
+				<div class="errors">
+					<form:errors path="userCredentials.verifyPassword" />
+				</div>
+				
+				<form:input placeHolder="${verifyPassword}" id="verifyPassword" path="userCredentials.verifyPassword" type="text" />
 			</div>
 
-			<%--               <div class="col-lg-12 form-group" th:classappend="${#fields.hasErrors('passwordConfirm')} ? 'has-error'">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                  <input id="password2" type="password" class="form-control" th:field="*{passwordConfirm}"
-                         placeholder="Retype Password" />
-                </div>
-                <small class="help-block" th:if="${#fields.hasErrors('passwordConfirm')}"
-                       th:errors="*{passwordConfirm}"></small>
-              </div> --%>
+			<div class="input-group">
+				<spring:message code="register.email" var="email" />
+				<label for="email">${email}</label>
+				<div class="errors">
+					<form:errors path="email" />
+				</div>
+				<form:input placeHolder="${email}" id="email" path="email" type="text" />
+			</div>			
+			<div class="form-group">
+			    	<spring:message code="register.registerBtnLabel" var="registerBtnTitle" />
+				<input class="formButton" type="submit" value="${registerBtnTitle}">
+			</div>
 
 			<div class="form-group">
-				<button type="submit">Register</button>
-			</div>
-
-			<div class="form-group">
+				<br>
 				Already have account? <a href="/login">Login Here</a>
 			</div>
 		</form:form>
+	</div>
 	</div>
 </body>
 </html>

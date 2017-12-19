@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import mum.waa.coffee.domain.Person;
+import mum.waa.coffee.domain.UserCredentials;
 import mum.waa.coffee.exception.EmailTakenException;
 import mum.waa.coffee.exception.UsernameTakenException;
 import mum.waa.coffee.service.PersonService;
@@ -22,72 +23,65 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/register")
 public class RegisterController {
-    private final PersonService personService;
-    private final AuthenticationManager authenticationManager;
+	private final PersonService memberService;
+	private final AuthenticationManager authenticationManager;
 
-    @Autowired
-    public RegisterController(PersonService personService, AuthenticationManager authenticationManager) {
-        this.personService = personService;
-        this.authenticationManager = authenticationManager;
-    }
+	@Autowired
+	public RegisterController(PersonService memberService, AuthenticationManager authenticationManager) {
+		this.memberService = memberService;
+		this.authenticationManager = authenticationManager;
+	}
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public String showRegisterForm(@ModelAttribute("member") Person person, Model model) {
-        model.addAttribute("member", person);
-        return "register";
-    }
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String showRegisterForm(@ModelAttribute("member") Person member, Model model) {
+		model.addAttribute("member", member);
+		return "register";
+	}
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public String register(@Valid Person person, BindingResult result, Model model, HttpServletRequest request) {
-//        String password = person.getPassword();
-//        String passwordConfirm = person.getPasswordConfirm();
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String register(@Valid @ModelAttribute("member") Person member, BindingResult result, Model model,
+			HttpServletRequest request) {
+		UserCredentials credentials = member.getUserCredentials();
+		 if (!credentials.getPassword().equals(credentials.getVerifyPassword())) {
+			 result.rejectValue("userCredentials.verifyPassword", "PasswordConfirmNotMatch", "Password Confirm does not match");
+		 }
 
-//        if (password.isEmpty()) {
-//            result.rejectValue("password", null, "Password cannot be empty");
-//        }
-//
-//        if (passwordConfirm.isEmpty()) {
-//            result.rejectValue("passwordConfirm", null, "Password confirm cannot be empty");
-//        }
-//
-//        if (!password.equals(passwordConfirm)) {
-//            result.rejectValue("passwordConfirm", null, "Password does not match");
-//        }
+		boolean hasError = result.hasErrors();
 
-        boolean hasError = result.hasErrors();
+		if (!hasError) {
+			try {
+				member.getUserCredentials().setEnabled(true);
+				memberService.registerNewPerson(member);
+				loginAfterRegistering(member, request);
+			} catch (EmailTakenException e) {
+				hasError = true;
+				result.rejectValue("email", "EmailAlreadyTaken", "Email is already taken");
+			} catch (UsernameTakenException e) {
+				hasError = true;
+				result.rejectValue("userCredentials.username", "UsernameAlreadyTaken", "User Name is already taken");
+			}
+		}
 
-        if (!hasError) {
-            try {
-                personService.registerNewPerson(person);
-                loginAfterRegistering(person, request);
-            } catch (EmailTakenException e) {
-                hasError = true;
-                result.rejectValue("email", "", "Email is already taken");
-            } catch (UsernameTakenException e) {
-                hasError = true;
-                result.rejectValue("username", "", "Username is already taken");
-            }
-        }
+		if (hasError) {
+			model.addAttribute("member", member);
+			return "register";
+		}
 
-        if (hasError) {
-            model.addAttribute("person", person);
-            return "register";
-        }
+		return "redirect:/";
+	}
 
-        return "redirect:/";
-    }
-
-    private void loginAfterRegistering(Person person, HttpServletRequest request) {
-//        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(person.getUsername(), person.getPassword());
-//
-//        // create session if not exist
-//        request.getSession();
-//
-//        token.setDetails(new WebAuthenticationDetails(request));
-//
-//        Authentication authentication = authenticationManager.authenticate(token);
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-    }
+	private void loginAfterRegistering(Person person, HttpServletRequest request) {
+		// UsernamePasswordAuthenticationToken token = new
+		// UsernamePasswordAuthenticationToken(person.getUsername(),
+		// person.getPassword());
+		//
+		// // create session if not exist
+		// request.getSession();
+		//
+		// token.setDetails(new WebAuthenticationDetails(request));
+		//
+		// Authentication authentication = authenticationManager.authenticate(token);
+		// SecurityContextHolder.getContext().setAuthentication(authentication);
+	}
 }
