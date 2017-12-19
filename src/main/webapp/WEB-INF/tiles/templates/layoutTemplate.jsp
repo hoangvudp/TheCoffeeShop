@@ -19,7 +19,7 @@
 </head>
 <body>
 <div id="header">
-	<h3 class="heading">CoffeeShop</h3>
+	<span class="heading">The Coffee Shop</span>
 	<tiles:insertAttribute name="navigation" />
 </div>
 <div id="content">
