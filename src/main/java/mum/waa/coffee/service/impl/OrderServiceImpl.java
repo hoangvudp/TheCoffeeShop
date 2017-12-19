@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,10 +20,12 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
+ 	@PreAuthorize("hasRole('ROLE_ADMIN')")
     public Order save(Order order) {
         return orderRepository.save(order);
     }
 
+ 	@PreAuthorize("hasRole('ROLE_ADMIN')")
     public void delete(Order order) {
         orderRepository.delete(order);
     }

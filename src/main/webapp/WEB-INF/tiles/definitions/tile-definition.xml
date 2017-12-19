@@ -26,9 +26,9 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/product.jsp" />
 	</definition>
 	
-	<definition name="addProduct" extends="baseLayout">
-		<put-attribute name="title" value="Products" />
-		<put-attribute name="body" value="/WEB-INF/jsp/addProduct.jsp" />
+	<definition name="editProduct" extends="baseLayout">
+		<put-attribute name="title" value="Product" />
+		<put-attribute name="body" value="/WEB-INF/jsp/editProduct.jsp" />
 	</definition>
 	
 	<definition name="placeOrder" extends="baseLayout">

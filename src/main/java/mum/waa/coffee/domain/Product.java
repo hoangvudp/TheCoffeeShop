@@ -2,48 +2,55 @@ package mum.waa.coffee.domain;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Product {
+public class Product implements Serializable {
 
-    @Id
-    @GeneratedValue
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1979663699318886847L;
+
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @NotEmpty(message = "Product name cannot be empty")
+    @NotEmpty
     private String productName;
 
     private String description;
 
-    @NotNull(message = "Product price cannot be empty")
-    @Min(value = 0, message = "Product price must be greater than or equal to 0")
+    @NotNull
+    @Min(value = 0)
     private Double price;
 
-    @Enumerated(EnumType.STRING)
-    @NotNull(message = "Product type cannot be empty")
-    private ProductType productType;
+    @OneToOne()
+    @JoinColumn(name="category_id")
+    private ProductCategory productCategory;
 
     public Product() {
         super(); // default constructor
     }
 
-    public Product(String productName, String description, double price, ProductType productType) {
+    public Product(String productName, String description, double price, ProductCategory productCategory) {
         super();
         this.productName = productName;
         this.description = description;
         this.price = price;
-        this.productType = productType;
+        this.productCategory = productCategory;
     }
 
-    public ProductType getProductType() {
-        return productType;
+    public ProductCategory getProductCategory() {
+        return productCategory;
     }
 
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
     }
 
     public String getProductName() {
@@ -85,7 +92,7 @@ public class Product {
                 ", productName='" + productName + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", productType=" + productType +
+                ", productCategory=" + productCategory +
                 '}';
     }
 }
