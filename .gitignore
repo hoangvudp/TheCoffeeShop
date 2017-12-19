@@ -48,3 +48,9 @@ target/m2e-wtp/web-resources/META-INF/maven/mum.waa/TheCoffeeShop/pom.xml
 target/classes/mum/waa/coffee/service/PersonService.class
 
 *.class
+
+target/classes/mum/waa/coffee/service/impl/PersonServiceImpl.class
+
+*.class
+
+target/classes/mum/waa/coffee/service/impl/PersonServiceImpl.class

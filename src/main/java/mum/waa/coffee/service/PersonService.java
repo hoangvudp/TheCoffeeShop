@@ -12,7 +12,7 @@ public interface PersonService {
 
     public Person savePerson(Person person);
 
-    public Person findByUsername(String username);
+//    public Person findByUsername(String username);
 
     public List<Person> findByEmail(String email);
 
