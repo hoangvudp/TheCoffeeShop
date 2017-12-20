@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -35,6 +36,9 @@ public class UserCredentials {
 	@JoinColumn(name = "username")
 	List<Authority> authority = new ArrayList<Authority>();
 
+	@OneToOne(mappedBy = "userCredentials")
+	Member member;
+	
 	public String getUsername() {
 		return username;
 	}
@@ -77,5 +81,13 @@ public class UserCredentials {
 	
 	public void addAuthority(Authority authority) {
 		this.authority.add(authority);
+	}
+	
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
 	}
 }
