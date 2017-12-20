@@ -54,6 +54,16 @@ div #inner {
     padding: 20px;
 }
 
+.inputText {
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -90,6 +100,29 @@ div.footer {
     bottom: 0;
     width: 100%;
     overflow:hidden;
+}
+
+.column {
+	box-sizing: border-box;
+	float: left;
+	padding: 10px;
+	height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+	width: 50%;
+}
+
+.right {
+	width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	width:750px;
+	content: "";
+	display: table;
+	clear: both;
 }
 
 /* #global {

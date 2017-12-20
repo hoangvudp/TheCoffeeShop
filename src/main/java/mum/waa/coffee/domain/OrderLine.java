@@ -51,11 +51,11 @@ public class OrderLine {
     }
 
     public double getSubtotal() {
-        return quantity * product.getPrice();
+        return quantity * product.getPrice().doubleValue();
     }
 
     public double getPrice() {
-        return product.getPrice();
+        return product.getPrice().doubleValue();
     }
 
     @Override

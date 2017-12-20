@@ -1,25 +1,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %>
 
 <script type="text/javascript" src="<spring:url value="/js/ajax.js"/>"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
-	<form:form modelAttribute="product" action="${not empty product.id ? product.id : 'add'}" method="POST">
+	<form:form modelAttribute="product" action="${not empty product.id ? product.id : 'add'}" method="POST" enctype="multipart/form-data">
 		<table>
 				<tr>
                		<td colspan="3"><form:errors path="*" cssStyle="color : red;"/></td>
                	</tr>
                 <tr>
                 	<td>Name: </td>
-               		<td>
-	               		<form:input path="productName"/>
+               		<td colspan="2">
+	               		<form:input path="productName" cssStyle="width:100em'"/>
   					</td>
   				</tr>
   				<tr>
                 	<td>Description: </td>
                		<td colspan="2">
-	               		<form:textarea path="description" rows="5" cols="30" />
+	               		<form:textarea path="description" rows="5" cols="40" />
   					</td>
   				</tr>
   				<tr>
@@ -35,9 +35,16 @@
   				<tr>
                 	<td>Price: </td>
                		<td colspan="2">
-	               		<form:input path="price" />
+	               		<form:input path="price" cssStyle="width:20em'"/>
   					</td>
   				</tr>
+  				
+				<tr>
+                	<td>Image: </td>
+               		<td colspan="2">
+	               		<form:input id="productImage" path="productImage" type="file"/>
+  					</td>
+  				</tr>			
 	            <tr>
 	            	<td colspan="3"><input type="submit" value="Save"></td>
 	            </tr>
@@ -53,7 +60,7 @@
                 <tr>
                 	<td>Name: </td>
                		<td>
-	               		<form:input path="name" cssStyle='width:10em'/>
+	               		<form:input path="name" cssStyle='width:22em'/>
   					</td>
   				</tr>
 	            <tr>

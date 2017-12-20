@@ -57,7 +57,7 @@
 	             token-validity-seconds="86400" remember-me-parameter="keepMe"/>
 	
 <!-- Version 4.0 + enables CSRF so if we want to disable-->
-<!-- 		<security:csrf disabled="true"/> -->
+ 		<security:csrf disabled="true"/>
  	</security:http>
  
 	

@@ -12,7 +12,7 @@ import mum.waa.coffee.domain.ProductCategory;
 import mum.waa.coffee.service.ProductCategoryService;
 
 @Controller
-@RequestMapping(value="categories")
+@RequestMapping(value="/categories")
 public class ProductCategoryController {
 	@Autowired
 	private ProductCategoryService productCategoryService;

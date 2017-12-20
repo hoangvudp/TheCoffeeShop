@@ -5,6 +5,7 @@ var contextRoot = "/" + window.location.pathname.split('/')[1];
 
 function categorySubmit() {
 	var sendToSend = JSON.stringify(serializeObject($('#categoryForm')));
+	console.log(sendToSend);
 	$.ajax({
 		url : contextRoot + '/categories/add',
 		type : 'POST',
@@ -18,7 +19,7 @@ function categorySubmit() {
 		},
 
 		error : function(jqXHR, textStatus, exception) {
-			alert(jqXHR.responseJSON.message);
+			console.log(jqXHR);
 		}
 	});
 }
