@@ -23,13 +23,17 @@ public class UserCredentials {
 	@NotEmpty
 	String username;
 	
-	@Column(nullable = false)
-	@NotEmpty
+//	@Column(nullable = false)
 	String password;
+
+	@Transient
+	@NotEmpty(groups = UserCredentials.class)
+	String inputPassword;
 	
 	@Transient
 	@NotEmpty(groups = UserCredentials.class)
 	String verifyPassword;
+	
 	Boolean enabled;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -55,6 +59,14 @@ public class UserCredentials {
 		this.password = password;
 	}
 
+	public String getInputPassword() {
+		return inputPassword;
+	}
+
+	public void setInputPassword(String inputPassword) {
+		this.inputPassword = inputPassword;
+	}
+	
 	public String getVerifyPassword() {
 		return verifyPassword;
 	}

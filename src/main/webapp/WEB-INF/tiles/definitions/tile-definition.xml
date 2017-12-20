@@ -51,6 +51,11 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/members.jsp" />
 	</definition>
 	 	
+	 <definition name="editMember" extends="baseLayout">
+		<put-attribute name="title" value="Edit Member" />
+		<put-attribute name="body" value="/WEB-INF/jsp/editMember.jsp" />
+	</definition>
+	 	
 	<definition name="productNotFound" extends="baseLayout">
 		<put-attribute name="title" value="Product Exception" />
  		<put-attribute name="body" value="/WEB-INF/jsp/productNotFound.jsp" />

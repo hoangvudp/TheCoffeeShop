@@ -36,7 +36,7 @@ public class MemberController {
 		return "members";
 	}
 
-	@RequestMapping(value = "{id}")
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	public String getMemberById(@PathVariable("id") Long id, Model model) {
 		Member member = memberService.findById(id);
 		if (member == null) {
@@ -47,15 +47,15 @@ public class MemberController {
 		return "member";
 	}
 
-	@RequestMapping(value = "/add")
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addMember(Model model, Member member) {
-		return "member";
+		return "editMember";
 	}
 
 	@RequestMapping(value = { "/add", "/edit/{id}" }, method = RequestMethod.POST)
 	public String saveMember(@Valid @ModelAttribute("member") Member member, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			return "member";
+			return "editMember";
 		}
 
 		Member savedMember = memberService.saveMember(member);
@@ -86,14 +86,14 @@ public class MemberController {
 		return "redirect:/members";
 	}
 
-	@RequestMapping(value = "/edit/{id}")
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editMember(@PathVariable("id") Long id, Model model) {
 		Member member = memberService.findById(id);
 		if (member == null) {
 			throw new MemberNotFoundException(id, null);
 		}
 		model.addAttribute("member", member);
-		return "member";
+		return "editMember";
 	}
 
 	@RequestMapping(value = "/delete/{id}")
