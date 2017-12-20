@@ -52,4 +52,14 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findByProductCategory(productCategory);
     }
 
+	@Override
+	public List<Product> findByProductCategoryId(Long productCategoryId) {
+		return productRepository.findByProductCategoryId(productCategoryId);
+	}
+
+	public static void main(String[] args) {
+		ProductService p = new ProductServiceImpl();
+		List<Product> l = p.findByProductCategoryId((long) 1);
+		System.out.println(l.size());
+	}
 }

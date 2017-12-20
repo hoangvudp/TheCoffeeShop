@@ -21,4 +21,5 @@ public interface ProductService {
 
     public List<Product> findByProductCategory(ProductCategory productCategory);
 
+    public List<Product> findByProductCategoryId(Long productCategoryId);
 }
