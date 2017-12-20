@@ -32,7 +32,7 @@
 					<td>
 						<a href="<spring:url value='/products/${product.id}'/>">${product.productName}</a>
 					</td>
-					<td>${product.description}</td>
+					<td><div class="truncate">${product.description}</div></td>
 					<td>${product.productCategory.name}</td>
 					<td>${product.price}</td>
 					<security:authorize access="hasRole('ROLE_ADMIN')">

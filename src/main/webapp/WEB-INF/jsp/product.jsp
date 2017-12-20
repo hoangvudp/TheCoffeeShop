@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="column left">
-    <img src="<c:url value="/images/${product.id}.jpg"></c:url>" alt="image"  style = "width:100%"/>
+    <img src="<c:url value="/images/${product.id}.jpeg"></c:url>" alt="image"  style = "width:100%"/>
   </div>
   <div class="column right">
     <h3>${product.productName}</h3>
@@ -12,7 +12,7 @@
 		<strong>Category</strong>: ${product.productCategory.name}
 	</p>
 	<p>
-		<strong>Price</strong>: <spring:eval expression =  "product.price" /> <spring:message code="currency.type"/></h4>
+		<strong>Price</strong>: <spring:eval expression= "product.price" /> <spring:message code="currency.type"/></h4>
 	</p>
   </div>
 </div>
