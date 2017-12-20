@@ -11,44 +11,45 @@
 	<security:authorize access="hasRole('ROLE_ADMIN')">
 		<a href="<spring:url value="/members/add"/>"><spring:message code="members.addMember"/></a>&nbsp;&nbsp;
 	</security:authorize>
-	
-	<table class="zebra">
+	<br>
+	<br>
+	<table class='tbData'>
 		<col>
 		<col>
 		<col>
 		<col>
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th><spring:message code="members.table.header.username"/></th>
-				<th><spring:message code="members.table.header.firstName"/></th>
-				<th><spring:message code="members.table.header.lastName"/></th>
-				<th><spring:message code="members.table.header.email"/></th>
-				<th><spring:message code="members.table.header.phone"/></th>
-				<th><spring:message code="members.table.header.city"/></th>
-				<th><spring:message code="members.table.header.state"/></th>
-				<th><spring:message code="members.table.header.country"/></th>
+				<th class='thtdData'>ID</th>
+				<th class='thtdData'><spring:message code="members.table.header.username"/></th>
+				<th class='thtdData'><spring:message code="members.table.header.firstName"/></th>
+				<th class='thtdData'><spring:message code="members.table.header.lastName"/></th>
+				<th class='thtdData'><spring:message code="members.table.header.email"/></th>
+				<th class='thtdData'><spring:message code="members.table.header.phone"/></th>
+				<th class='thtdData'><spring:message code="members.table.header.city"/></th>
+				<th class='thtdData'><spring:message code="members.table.header.state"/></th>
+				<th class='thtdData'><spring:message code="members.table.header.country"/></th>
 				<security:authorize access="hasRole('ROLE_ADMIN')">
-					<th><spring:message code="members.table.header.actions"/></th>
+					<th class='thtdData'><spring:message code="members.table.header.actions"/></th>
 				</security:authorize>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${members}" var="member">
-				<tr>
-					<td>${member.id}</td>
-					<td>
+				<tr class='dataRowHover'>
+					<td class='thtdData'>${member.id}</td>
+					<td class='thtdData'>
 						<a href="<spring:url value='/members/${member.id}'/>">${member.userCredentials.username}</a>
 					</td>
-					<td>${member.firstName}</td>
-					<td>${member.lastName}</td>
-					<td>${member.email}</td>
-					<td>${member.phone}</td>
-					<td>${member.address.city}</td>
-					<td>${member.address.state}</td>
-					<td>${member.address.country}</td>
+					<td class='thtdData'>${member.firstName}</td>
+					<td class='thtdData'>${member.lastName}</td>
+					<td class='thtdData'>${member.email}</td>
+					<td class='thtdData'>${member.phone}</td>
+					<td class='thtdData'>${member.address.city}</td>
+					<td class='thtdData'>${member.address.state}</td>
+					<td class='thtdData'>${member.address.country}</td>
 					<security:authorize access="hasRole('ROLE_ADMIN')">
-					  <td>
+					  <td class='thtdData'>
 					  <security:authorize access="isAuthenticated()">
   						<security:authentication property="principal.username" var="currentUsername" />
 					  </security:authorize>
