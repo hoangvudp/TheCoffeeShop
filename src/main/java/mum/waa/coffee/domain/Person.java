@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -19,7 +20,7 @@ public class Person {
 
     private String lastName;
 
-    @NotEmpty(message = "Email cannot be empty")
+    @NotEmpty
     @Email
     private String email;
 
@@ -46,7 +47,8 @@ public class Person {
 //    private Set<Role> roles = new HashSet<>();
 
 	@OneToOne(fetch=FetchType.LAZY) 
- 	@JoinColumn(name="member_id") 
+ 	@JoinColumn(name="member_id")
+	@Valid
  	UserCredentials userCredentials;
     
     public Person() {

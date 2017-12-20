@@ -6,6 +6,7 @@ import mum.waa.coffee.repository.ProductRepository;
 import mum.waa.coffee.service.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,10 +19,12 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+ 	@PreAuthorize("hasRole('ROLE_ADMIN')")
     public Product save(Product product) {
         return productRepository.save(product);
     }
 
+ 	@PreAuthorize("hasRole('ROLE_ADMIN')")
     public void delete(Long productId) {
         productRepository.delete(productId);
     }

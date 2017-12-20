@@ -1,7 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
@@ -22,11 +22,11 @@
 			</c:if>
 			<form action="<spring:url value="/login"></spring:url>" method="post">
 				<div class="form-group">
-					<spring:message code="login.username" var="usernamePlaceholder" />
+					<spring:message code="username" var="usernamePlaceholder" />
 					<input placeholder="${usernamePlaceholder}" name='username' type="text">
 				</div>
 				<div class="form-group">
-					<spring:message code="login.password" var="passwordPlaceholder" />
+					<spring:message code="password" var="passwordPlaceholder" />
 					<input placeholder="${passwordPlaceholder}" name='password' type="password" value="">
 				</div>
 				<div class="form-group">
@@ -35,7 +35,7 @@
 			    	</div>
 			    	<div class="form-group">
 			    		<spring:message code="login.loginBtnTitle" var="loginBtnTitle" />
-					<input id='btnLogin' type="submit" value="${loginBtnTitle}">
+					<input class="formButton" type="submit" value="${loginBtnTitle}">
 				</div>
 				<security:csrfInput />
 			</form>

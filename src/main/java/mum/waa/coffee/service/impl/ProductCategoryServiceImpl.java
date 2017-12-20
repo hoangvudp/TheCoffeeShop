@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import mum.waa.coffee.domain.ProductCategory;
@@ -19,11 +20,13 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 	private ProductCategoryRepository productCategoryRepository;
 	
 	@Override
+ 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ProductCategory save(ProductCategory product) {
 		return productCategoryRepository.save(product);
 	}
 
 	@Override
+ 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void delete(Long productId) {
 		productCategoryRepository.delete(productId);;
 	}
