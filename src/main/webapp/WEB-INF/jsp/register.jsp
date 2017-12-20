@@ -60,7 +60,7 @@
 
 			<div class="form-group">
 				<br>
-				Already have account? <a href="/login">Login Here</a>
+				Already have account? <a href="<spring:url value="/login"></spring:url>">Login</a>
 			</div>
 		</form:form>
 	</div>

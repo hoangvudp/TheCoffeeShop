@@ -1,11 +1,6 @@
 package mum.waa.coffee.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,20 +13,18 @@ import mum.waa.coffee.domain.UserCredentials;
 import mum.waa.coffee.exception.EmailTakenException;
 import mum.waa.coffee.exception.UsernameTakenException;
 import mum.waa.coffee.service.PersonService;
+import mum.waa.coffee.service.SecurityService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
 public class RegisterController {
-	private final PersonService memberService;
-	private final AuthenticationManager authenticationManager;
-
 	@Autowired
-	public RegisterController(PersonService memberService, AuthenticationManager authenticationManager) {
-		this.memberService = memberService;
-		this.authenticationManager = authenticationManager;
-	}
+	private PersonService memberService;
+	
+	@Autowired
+	private SecurityService securityService;
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String showRegisterForm(@ModelAttribute("member") Person member, Model model) {
@@ -53,13 +46,17 @@ public class RegisterController {
 			try {
 				member.getUserCredentials().setEnabled(true);
 				memberService.registerNewPerson(member);
-				loginAfterRegistering(member, request);
+				System.out.println(credentials.getPassword());
+		        securityService.autologin(credentials.getUsername(), credentials.getVerifyPassword());
+
 			} catch (EmailTakenException e) {
 				hasError = true;
 				result.rejectValue("email", "EmailAlreadyTaken", "Email is already taken");
 			} catch (UsernameTakenException e) {
 				hasError = true;
 				result.rejectValue("userCredentials.username", "UsernameAlreadyTaken", "User Name is already taken");
+			} catch (Exception ex) {
+				ex.printStackTrace();
 			}
 		}
 
@@ -69,19 +66,5 @@ public class RegisterController {
 		}
 
 		return "redirect:/";
-	}
-
-	private void loginAfterRegistering(Person person, HttpServletRequest request) {
-		// UsernamePasswordAuthenticationToken token = new
-		// UsernamePasswordAuthenticationToken(person.getUsername(),
-		// person.getPassword());
-		//
-		// // create session if not exist
-		// request.getSession();
-		//
-		// token.setDetails(new WebAuthenticationDetails(request));
-		//
-		// Authentication authentication = authenticationManager.authenticate(token);
-		// SecurityContextHolder.getContext().setAuthentication(authentication);
 	}
 }
