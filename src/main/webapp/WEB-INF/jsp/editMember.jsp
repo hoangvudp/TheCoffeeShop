@@ -15,7 +15,7 @@
 		<tr>
 			<td>User Name:</td>
 			<td colspan="2"><form:input path="userCredentials.username"
-					readonly="true" cssStyle="width:100em'" /></td>
+					cssStyle="width:100em'" /></td>
 		</tr>
 		<tr>
 			<td>First Name:</td>

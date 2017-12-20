@@ -30,7 +30,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public Member saveMember(Member member) {  
+    public Member saveMember(Member member) throws EmailTakenException, UsernameTakenException {
+    		validateMember(member, false);
+    	
   		credentialsService.save(member.getUserCredentials());
   		return memberRepository.save(member);
     }
@@ -55,6 +57,19 @@ public class MemberServiceImpl implements MemberService {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Member registerNewMember(Member member) throws EmailTakenException, UsernameTakenException {
+    	String username = member.getUserCredentials().getUsername();
+
+    		validateMember(member, true);
+    	    
+    		Authority authority = new Authority();
+    	    authority.setUsername(username);
+    	    authority.setAuthority("ROLE_USER");
+    	    member.getUserCredentials().addAuthority(authority);
+    		
+    	    return saveMember(member);
+    }
+    
+    public void validateMember(Member member, boolean isNewMember) throws EmailTakenException, UsernameTakenException {
         String username = member.getUserCredentials().getUsername();
         String email = member.getEmail();
 
@@ -62,16 +77,10 @@ public class MemberServiceImpl implements MemberService {
             throw new UsernameTakenException("Username is already taken: " + username);
         }
 
-        if (!findByEmail(email).isEmpty()) {
-            throw new EmailTakenException("Email is already exists: " + email);
+        if (isNewMember) {
+            if (!findByEmail(email).isEmpty()) {
+                throw new EmailTakenException("Email is already exists: " + email);
+            }        	
         }
-
-        Authority authority = new Authority();
-        authority.setUsername(username);
-        authority.setAuthority("ROLE_USER");
-        
-        member.getUserCredentials().addAuthority(authority);
-
-        return saveMember(member);
     }
 }
