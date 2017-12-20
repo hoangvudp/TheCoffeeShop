@@ -9,6 +9,7 @@ import mum.waa.coffee.service.MemberService;
 import mum.waa.coffee.service.UserCredentialsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,7 @@ public class MemberServiceImpl implements MemberService {
         return (List<Member>) memberRepository.findAll();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Member saveMember(Member member) {  
   		credentialsService.save(member.getUserCredentials());
   		return memberRepository.save(member);
@@ -41,14 +43,17 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.findOne(id);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void removeMember(Member member) {
         memberRepository.delete(member);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void removeMember(Long id) {
         memberRepository.delete(id);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Member registerNewMember(Member member) throws EmailTakenException, UsernameTakenException {
         String username = member.getUserCredentials().getUsername();
         String email = member.getEmail();

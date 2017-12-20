@@ -8,6 +8,10 @@
 <title>Members</title>
 </head>
 <body>
+	<security:authorize access="hasRole('ROLE_ADMIN')">
+		<a href="<spring:url value="/members/add"/>"><spring:message code="members.addMember"/></a>&nbsp;&nbsp;
+	</security:authorize>
+	
 	<table class="zebra">
 		<col>
 		<col>
@@ -45,8 +49,14 @@
 					<td>${member.address.country}</td>
 					<security:authorize access="hasRole('ROLE_ADMIN')">
 					  <td>
-						<a href="<spring:url value='/members/edit/${member.id}'/>"><spring:message code="members.table.row.edit"/></a>&nbsp;&nbsp;
-						<a href="<spring:url value='/members/delete/${member.id}'/>"><spring:message code="members.table.row.delete"/></a>
+					  <security:authorize access="isAuthenticated()">
+  						<security:authentication property="principal.username" var="currentUsername" />
+					  </security:authorize>
+					  
+					  <a href="<spring:url value='/members/edit/${member.id}'/>"><spring:message code="members.table.row.edit"/></a>&nbsp;&nbsp;
+					  <c:if test="${currentUsername ne member.userCredentials.username}" >
+					  	<a href="<spring:url value='/members/delete/${member.id}'/>"><spring:message code="members.table.row.delete"/></a>
+					  </c:if>
 					  </td> 
 					</security:authorize>
 				</tr>

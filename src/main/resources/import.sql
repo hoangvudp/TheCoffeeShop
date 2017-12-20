@@ -1,6 +1,8 @@
-                                                                   
-INSERT INTO credentials(username,password,enabled) VALUES ('guest','$2a$10$0.ESlGysrPaiW5HaapKwoehzWt5AibgbPPOvMhDv8D6H26QQ/CwhS', TRUE);
-INSERT INTO credentials(username,password,enabled) VALUES ('admin','$2a$10$S/wlXEo/APzf.Sn1cO2p4.V12EJmaw.uzrHelMvkpuahjmHWnSafe', TRUE);
+
+INSERT INTO credentials(username,password,enabled) VALUES ('admin','$2a$10$S/wlXEo/APzf.Sn1cO2p4.V12EJmaw.uzrHelMvkpuahjmHWnSafe', TRUE);                                                                   
+INSERT INTO credentials(username,password,enabled) VALUES ('pham.dong','$2a$10$0.ESlGysrPaiW5HaapKwoehzWt5AibgbPPOvMhDv8D6H26QQ/CwhS', TRUE);
+INSERT INTO credentials(username,password,enabled) VALUES ('samson.weldigebriel','$2a$10$0.ESlGysrPaiW5HaapKwoehzWt5AibgbPPOvMhDv8D6H26QQ/CwhS', TRUE);
+INSERT INTO credentials(username,password,enabled) VALUES ('vinh.hoang','$2a$10$0.ESlGysrPaiW5HaapKwoehzWt5AibgbPPOvMhDv8D6H26QQ/CwhS', TRUE);
   
 INSERT INTO authority (id,username, authority) VALUES (1,'guest', 'ROLE_USER');
 INSERT INTO authority (id,username, authority) VALUES (2,'admin', 'ROLE_ADMIN');
@@ -11,10 +13,10 @@ INSERT INTO coffeeshop.address VALUES ('2', 'Ottumwa', 'USA', 'Iowa', '64353');
 INSERT INTO coffeeshop.address VALUES ('3', 'Burlington', 'USA', 'Iowa', '64353');
 INSERT INTO coffeeshop.address VALUES ('4', 'Mount Pleasant', 'USA', 'Iowa', '64353');
 
-INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('pham.dong@mail.com', 'Pham', 'Dong', '123456789', 1, 'admin');
-INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('samson.weldigebriel@mail.com', 'Samson', 'Weldigebriel', '222222222', 2, 'admin');
-INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('vinh.hoang@mail.com', 'Vinh', 'Hoang', '333333333', 3, 'admin');
-INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('john.doe@mail.com', 'John', 'Doe', '987654321', 4, 'guest');
+INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('admin@mail.com', 'John', 'Doe', '987654321', 1, 'admin');
+INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('pham.dong@mail.com', 'Pham', 'Dong', '123456789', 2, 'pham.dong');
+INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('samson.weldigebriel@mail.com', 'Samson', 'Weldigebriel', '222222222', 3, 'samson.weldigebriel');
+INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('vinh.hoang@mail.com', 'Vinh', 'Hoang', '333333333', 4, 'vinh.hoang');
 
 INSERT INTO coffeeshop.productcategory (name) VALUES ("Breakfast");
 INSERT INTO coffeeshop.productcategory (name) VALUES ("Lunch");
