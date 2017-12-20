@@ -51,7 +51,7 @@
  <!-- END of comment out  for BASIC Login -->
  
     
-         <security:logout logout-success-url="/logout" 
+         <security:logout logout-success-url="/" 
           delete-cookies="JSESSIONID" />    
        
  		   <!-- enable remember me -->
