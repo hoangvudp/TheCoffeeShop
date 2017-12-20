@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import mum.waa.coffee.domain.Person;
+import mum.waa.coffee.domain.Member;
 import mum.waa.coffee.domain.UserCredentials;
 import mum.waa.coffee.exception.EmailTakenException;
 import mum.waa.coffee.exception.UsernameTakenException;
-import mum.waa.coffee.service.PersonService;
+import mum.waa.coffee.service.MemberService;
 import mum.waa.coffee.service.SecurityService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,19 +21,19 @@ import javax.validation.Valid;
 @Controller
 public class RegisterController {
 	@Autowired
-	private PersonService memberService;
+	private MemberService memberService;
 	
 	@Autowired
 	private SecurityService securityService;
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String showRegisterForm(@ModelAttribute("member") Person member, Model model) {
+	public String showRegisterForm(@ModelAttribute("member") Member member, Model model) {
 		model.addAttribute("member", member);
 		return "register";
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String register(@Valid @ModelAttribute("member") Person member, BindingResult result, Model model,
+	public String register(@Valid @ModelAttribute("member") Member member, BindingResult result, Model model,
 			HttpServletRequest request) {
 		UserCredentials credentials = member.getUserCredentials();
 		 if (!credentials.getPassword().equals(credentials.getVerifyPassword())) {
@@ -45,7 +45,7 @@ public class RegisterController {
 		if (!hasError) {
 			try {
 				member.getUserCredentials().setEnabled(true);
-				memberService.registerNewPerson(member);
+				memberService.registerNewMember(member);
 				System.out.println(credentials.getPassword());
 		        securityService.autologin(credentials.getUsername(), credentials.getVerifyPassword());
 

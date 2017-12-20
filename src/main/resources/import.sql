@@ -8,9 +8,13 @@ INSERT INTO authority (id,username, authority) VALUES (3,'admin', 'ROLE_USER');
 
 INSERT INTO coffeeshop.address VALUES ('1', 'Fairfield', 'USA', 'Iowa', '52556');
 INSERT INTO coffeeshop.address VALUES ('2', 'Ottumwa', 'USA', 'Iowa', '64353');
+INSERT INTO coffeeshop.address VALUES ('3', 'Burlington', 'USA', 'Iowa', '64353');
+INSERT INTO coffeeshop.address VALUES ('4', 'Mount Pleasant', 'USA', 'Iowa', '64353');
 
-INSERT INTO coffeeshop.person (email, firstName, lastName, phone, address_id, member_id) VALUES ('admin@mail.com', 'admin', null, '123456789', 1, 'admin');
-INSERT INTO coffeeshop.person (email, firstName, lastName, phone, address_id, member_id) VALUES ('user@mail.com', 'user', null, '987654321', 2, 'guest');
+INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('pham.dong@mail.com', 'Pham', 'Dong', '123456789', 1, 'admin');
+INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('samson.weldigebriel@mail.com', 'Samson', 'Weldigebriel', '222222222', 2, 'admin');
+INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('vinh.hoang@mail.com', 'Vinh', 'Hoang', '333333333', 3, 'admin');
+INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('john.doe@mail.com', 'John', 'Doe', '987654321', 4, 'guest');
 
 INSERT INTO coffeeshop.productcategory (name) VALUES ("Breakfast");
 INSERT INTO coffeeshop.productcategory (name) VALUES ("Lunch");

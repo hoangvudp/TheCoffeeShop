@@ -24,7 +24,7 @@ public class Order {
     private List<OrderLine> orderLines = new ArrayList<>();
 
     @OneToOne
-    private Person person;
+    private Member person;
 
     public Long getId() {
         return id;
@@ -38,11 +38,11 @@ public class Order {
         return orderLines;
     }
 
-    public Person getPerson() {
+    public Member getPerson() {
         return person;
     }
 
-    public void setPerson(Person person) {
+    public void setPerson(Member person) {
         this.person = person;
     }
 

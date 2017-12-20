@@ -8,6 +8,10 @@
 <title>Products</title>
 </head>
 <body>
+	<security:authorize access="hasRole('ROLE_ADMIN')">
+		<a href="<spring:url value="/products/add"/>"><spring:message code="products.addProduct"/></a>&nbsp;&nbsp;
+	</security:authorize>
+	
 	<table class="zebra">
 		<col>
 		<col>
