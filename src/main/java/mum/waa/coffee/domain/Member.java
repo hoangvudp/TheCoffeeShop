@@ -12,8 +12,10 @@ public class Member {
 	@GeneratedValue
 	private Long id;
 
+	@NotEmpty
 	private String firstName;
 
+	@NotEmpty
 	private String lastName;
 
 	@NotEmpty

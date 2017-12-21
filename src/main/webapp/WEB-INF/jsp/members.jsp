@@ -8,13 +8,6 @@
 <title>Members</title>
 </head>
 <body>
-	<security:authorize access="hasRole('ROLE_ADMIN')">
-		<div class="floatLeft">
-			<a href="<spring:url value="/members/add"/>"><spring:message code="members.addMember"/></a>&nbsp;&nbsp;
-		</div>
-	</security:authorize>
-	<br>
-	<br>
 	<table class='tbData'>
 		<col>
 		<col>

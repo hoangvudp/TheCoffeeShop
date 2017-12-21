@@ -26,6 +26,24 @@
 			</div>
 
 			<div class="input-group">
+				<spring:message code="firstName" var="firstName" />
+				<label for="firstName">${firstName}</label>
+				<div class="errors">
+					<form:errors path="firstName" />
+				</div>
+				<form:input placeHolder="${firstName}" id="firstName" path="firstName" type="text" />
+			</div>
+			
+			<div class="input-group">
+				<spring:message code="lastName" var="lastName" />
+				<label for="lastName">${lastName}</label>
+				<div class="errors">
+					<form:errors path="lastName" />
+				</div>
+				<form:input placeHolder="${lastName}" id="lastName" path="lastName" type="text" />
+			</div>
+
+			<div class="input-group">
 				<spring:message code="password" var="password" />
 				<label for="password">${password}</label>
 				<div class="errors">
