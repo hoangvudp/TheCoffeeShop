@@ -4,9 +4,11 @@ INSERT INTO credentials(username,password,enabled) VALUES ('pham.dong','$2a$10$0
 INSERT INTO credentials(username,password,enabled) VALUES ('samson.weldigebriel','$2a$10$0.ESlGysrPaiW5HaapKwoehzWt5AibgbPPOvMhDv8D6H26QQ/CwhS', TRUE);
 INSERT INTO credentials(username,password,enabled) VALUES ('vinh.hoang','$2a$10$0.ESlGysrPaiW5HaapKwoehzWt5AibgbPPOvMhDv8D6H26QQ/CwhS', TRUE);
   
-INSERT INTO authority (id,username, authority) VALUES (1,'guest', 'ROLE_USER');
+INSERT INTO authority (id,username, authority) VALUES (1,'admin', 'ROLE_USER');
 INSERT INTO authority (id,username, authority) VALUES (2,'admin', 'ROLE_ADMIN');
-INSERT INTO authority (id,username, authority) VALUES (3,'admin', 'ROLE_USER');
+INSERT INTO authority (id,username, authority) VALUES (3,'pham.dong', 'ROLE_USER');
+INSERT INTO authority (id,username, authority) VALUES (4,'samson.weldigebriel', 'ROLE_USER');
+INSERT INTO authority (id,username, authority) VALUES (5,'vinh.hoang', 'ROLE_USER');
 
 INSERT INTO coffeeshop.address VALUES ('1', 'Fairfield', 'USA', 'Iowa', '52556');
 INSERT INTO coffeeshop.address VALUES ('2', 'Ottumwa', 'USA', 'Iowa', '64353');
