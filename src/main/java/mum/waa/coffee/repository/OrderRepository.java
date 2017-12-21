@@ -13,7 +13,7 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
 
     List<Order> findDistinctOrderByOrderLines_Product(Product product);
 
-    List<Order> findOrderByPerson(Member person);
+    List<Order> findOrderByMember(Member member);
 
     List<Order> findOrderByOrderDateBetween(Date minDate, Date maxDate);
 

@@ -61,11 +61,6 @@ public class OrderLine {
 
     @Override
     public String toString() {
-        return "OrderLine{" +
-                "id=" + id +
-                ", quantity=" + quantity +
-                ", product=" + product +
-                ", order=" + order +
-                '}';
+        return product.getProductName() + "(" + quantity + ")";
     }
 }

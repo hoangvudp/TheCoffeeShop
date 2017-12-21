@@ -99,7 +99,7 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Person{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\''
+		return "Member{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\''
 				+ ", email='" + email + '\'' + ", address=" + address + ", phone='" + phone + '\'' + '}';
 	}
 }

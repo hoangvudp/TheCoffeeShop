@@ -28,7 +28,6 @@ import mum.waa.coffee.domain.*;
 import mum.waa.coffee.repository.UserCredentialsRepository;
 
 @Controller
-@SessionAttributes("person")
 public class OrderController {
 	@Autowired
 	private UserCredentialsRepository userRepository;
@@ -56,7 +55,7 @@ public class OrderController {
 		}
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserCredentials userCredentials = userRepository.findByUsername(user.getUsername());
-		order.setPerson(userCredentials.getMember());
+		order.setMember(userCredentials.getMember());
 		for (int i = 0; i < order.getOrderLines().size(); i++) {
 			order.getOrderLines().get(i).setOrder(order);
 		}
@@ -82,12 +81,12 @@ public class OrderController {
         return "order/add";
     }
 	
-	@RequestMapping(value="/allOrders", method=RequestMethod.GET)
+	@RequestMapping(value="/orders", method=RequestMethod.GET)
 	public String showAllOrders(Model model){
 
-		model.addAttribute("products", productService.getAllProducts());
+		//model.addAttribute("products", productService.getAllProducts());
 		model.addAttribute("orders", orderService.findAll());
-		return "allOrders";
+		return "orders";
 	}
 
 }

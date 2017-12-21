@@ -34,8 +34,8 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.findDistinctOrderByOrderLines_Product(product);
     }
 
-    public List<Order> findByPerson(Member person) {
-        return orderRepository.findOrderByPerson(person);
+    public List<Order> findByMember(Member member) {
+        return orderRepository.findOrderByMember(member);
     }
 
     public List<Order> findByDate(Date minDate, Date maxDate) {

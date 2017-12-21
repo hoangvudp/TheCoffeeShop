@@ -29,6 +29,9 @@
 		<a href="<spring:url value="/placeOrder"/>"><spring:message code="navigation.placeOrder"/></a>&nbsp;&nbsp;
 	</security:authorize>
 	<security:authorize access="hasRole('ROLE_ADMIN')">
+		<a href="<spring:url value="/orders"/>"><spring:message code="navigation.orders"/></a>&nbsp;&nbsp;
+	</security:authorize>
+	<security:authorize access="hasRole('ROLE_ADMIN')">
 		<a href="<spring:url value="/products"/>"><spring:message code="navigation.products"/></a>&nbsp;&nbsp;
 	</security:authorize>
 	<security:authorize access="hasRole('ROLE_ADMIN')">

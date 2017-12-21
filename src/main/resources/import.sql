@@ -13,6 +13,11 @@ INSERT INTO coffeeshop.address VALUES ('2', 'Ottumwa', 'USA', 'Iowa', '64353');
 INSERT INTO coffeeshop.address VALUES ('3', 'Burlington', 'USA', 'Iowa', '64353');
 INSERT INTO coffeeshop.address VALUES ('4', 'Mount Pleasant', 'USA', 'Iowa', '64353');
 
+
+
+INSERT INTO `orders` VALUES ('1', '2017-12-20', '1');
+
+
 INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('admin@mail.com', 'John', 'Doe', '987654321', 1, 'admin');
 INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('pham.dong@mail.com', 'Pham', 'Dong', '123456789', 2, 'pham.dong');
 INSERT INTO coffeeshop.member (email, firstName, lastName, phone, address_id, member_id) VALUES ('samson.weldigebriel@mail.com', 'Samson', 'Weldigebriel', '222222222', 3, 'samson.weldigebriel');
@@ -39,3 +44,12 @@ INSERT INTO coffeeshop.product (description, price, productName, category_id) VA
 INSERT INTO coffeeshop.product (description, price, productName, category_id) VALUES ('Ginger, cinnamon and allspice bring a gingerbread flavor to this hot chocolate. Intense Dutch-process cocoa powder balances the spices, and chopped milk chocolate is mixed in at the end for a creamy, rich texture.', 7.5, 'Gingerbread Hot Chocolate', 4);
 INSERT INTO coffeeshop.product (description, price, productName, category_id) VALUES ('These gooey pastries rival Grandma (or a certain airport cinnamon-roll tycoon) any day. The comforting aroma of spicy cinnamon and nutmeg sprinkled between layers.', 3.4, 'Almost-Famous Cinnamon Buns', 1);
 INSERT INTO coffeeshop.product (description, price, productName, category_id) VALUES ('After you are done devouring this light and crispy fried shrimp (with blue cheese and hot sauce dips!), bookmark this recipe permanently', 7.5, 'Buffalo Shrimp Tempura', 3);
+
+INSERT INTO `orders` VALUES ('2', '2017-12-20', '1');
+INSERT INTO `orders` VALUES ('3', '2017-12-20', '1');
+INSERT INTO `orders` VALUES ('4', '2017-12-20', '1');
+
+INSERT INTO `orderline` VALUES ('1', '3', '1', '1');
+INSERT INTO `orderline` VALUES ('2', '3', '2', '1');
+INSERT INTO `orderline` VALUES ('3', '7', '3', '2');
+INSERT INTO `orderline` VALUES ('4', '2', '4', '6');

@@ -4,6 +4,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +26,7 @@ public class Order {
     private List<OrderLine> orderLines = new ArrayList<>();
 
     @OneToOne
-    private Member person;
+    private Member member;
 
     public Long getId() {
         return id;
@@ -38,12 +40,12 @@ public class Order {
         return orderLines;
     }
 
-    public Member getPerson() {
-        return person;
+    public Member getMember() {
+        return member;
     }
 
-    public void setPerson(Member person) {
-        this.person = person;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public Date getOrderDate() {
@@ -62,13 +64,14 @@ public class Order {
         return quantity;
     }
 
-    public double getTotalAmount() {
+    public String getTotalAmount() {
         double totalAmount = 0;
 
         for (OrderLine ol : this.orderLines) {
             totalAmount += ol.getSubtotal();
         }
-        return totalAmount;
+        DecimalFormat format = new DecimalFormat("##.00");
+        return format.format(totalAmount);
     }
 
     public void addOrderLine(OrderLine orderLine) {
@@ -94,7 +97,7 @@ public class Order {
                 "id=" + id +
                 ", orderDate=" + orderDate +
                 ", orderLines=" + orderLines +
-                ", person=" + person +
+                ", member=" + member +
                 '}';
     }
 }
