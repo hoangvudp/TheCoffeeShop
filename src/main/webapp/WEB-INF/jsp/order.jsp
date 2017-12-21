@@ -27,27 +27,63 @@
 						
 						Product Name:
 						
+						
+						
 						<table class="dynatable">
 						 <tbody id="p_scents">
 						<tr class="orderline">
 						<td>
+						
+						<c:set var="index" value="0"> </c:set>
+						
 						<div id="orderLineDiv">
-													
-						<c:forEach items="${order.orderLines}" var="orderLine" varStatus="idx">
-							<form:select path="orderLines[${idx.index}].product.id">
+						
+							<c:forEach items="${order.orderLines}" var="orderLine" varStatus="idx">
+								<form:select path="orderLines[${idx.index}].product.id">
+									<form:option value="NULL"	label="--Select	Product--"/>
+									<form:options items="${products}" itemLabel="productName" itemValue="id" />
+								</form:select>
+								<form:label path="orderLines[${idx.index}].quantity">Quantity</form:label>
+								<form:input path="orderLines[${idx.index}].quantity"/>
+							
+							</c:forEach>
+							
+							</div>
+						</td>
+						<td>
+						 <button 
+                            type="submit"
+                            name="addOrderLine"> Add
+                    </button>
+                    <button                            th:value="${rowStat.index}"                            
+                            type="submit"
+                            name="removeOrderLine">
+                     Remove
+                    </button>
+						<!--  <a href="placeOrder" id="addScnt2">Add</a> -->
+						 </td>
+						</tr>	
+						
+						<%-- <c:forEach items="${order.orderLines}" var="orderLine" varStatus="status">
+							<form:select path='${orderLines[${status.index}].product.id}'>
 								<form:option value="NULL"	label="--Select	Product--"/>
 								<form:options items="${products}" itemLabel="productName" itemValue="id" />
 							</form:select>
 						
-						<form:label path="orderLines[${idx.index}].quantity">Quantity</form:label>
-						<form:input path="orderLines[${idx.index}].quantity"/>
+						<form:label path="orderLines[${status.index}].quantity"></form:label>
+						<form:input path="orderLines[status.index].quantity"/>
+						
+<!-- 						<label for="orderLines.quantity"> </label> -->
+     					<input type="text" name="orderLines[${status.index}].quantity" value="${orderLine.quantity}" />
 						
 						</c:forEach>
 						
-						</div>
-						</td>
-						<td> <a href="#" id="addScnt">Add</a> </td>
-						</tr>										
+						<c:forEach items="${order.orderLines}" var="orderLine" varStatus="status">
+							${orderLines[${status.index}].quantity}  &nbsp;
+							${orderLines[${status.index}].product.id}
+						</c:forEach> --%>
+						
+															
 						
 						</tbody>
 						</table>

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
 
 import mum.waa.coffee.service.OrderService;
 import mum.waa.coffee.service.MemberService;
@@ -63,6 +65,22 @@ public class OrderController {
 		
 		return "orderSuccess";
 	}
+	
+	@RequestMapping(value = "/add", params = "addOrderLine", method = RequestMethod.POST)
+    public String addOrderLine(Order order, BindingResult result) {
+        OrderLine orderLine = new OrderLine();
+        order.addOrderLine(orderLine);
+
+        return "order/add";
+    }
+
+    @RequestMapping(value = "/add", params = "removeOrderLine", method = RequestMethod.POST)
+    public String removeOrderLine(Order order, BindingResult result, HttpServletRequest request) {
+        int orderLineId = Integer.valueOf(request.getParameter("removeOrderLine"));
+        order.getOrderLines().remove(orderLineId);
+
+        return "order/add";
+    }
 	
 	@RequestMapping(value="/allOrders", method=RequestMethod.GET)
 	public String showAllOrders(Model model){

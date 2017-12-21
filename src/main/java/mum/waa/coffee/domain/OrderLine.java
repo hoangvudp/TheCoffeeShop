@@ -15,6 +15,7 @@ public class OrderLine {
     @OneToOne
     private Product product;
 
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @ManyToOne
     private Order order;
 
