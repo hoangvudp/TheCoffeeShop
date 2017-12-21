@@ -3,12 +3,12 @@ package mum.waa.coffee.controller;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -63,15 +63,17 @@ public class MemberController {
 		}
 
 		try {
-			memberService.saveMember(member);
+			if (member.getId() != null) {
+				memberService.saveMember(member);
+			} else {
+				memberService.registerNewMember(member);
+			}
 		} catch (EmailTakenException e) {
 			hasError = true;
 			result.rejectValue("email", "EmailAlreadyTaken", "Email is already taken");
 		} catch (UsernameTakenException e) {
 			hasError = true;
 			result.rejectValue("userCredentials.username", "UsernameAlreadyTaken", "User Name is already taken");
-		} catch (Exception ex) {
-			ex.printStackTrace();
 		}
 		
 		if (hasError) {

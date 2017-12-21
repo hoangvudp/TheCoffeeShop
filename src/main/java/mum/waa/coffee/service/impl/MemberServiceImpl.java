@@ -31,7 +31,7 @@ public class MemberServiceImpl implements MemberService {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Member saveMember(Member member) throws EmailTakenException, UsernameTakenException {
-    		validateMember(member, false);
+    		validateMember(member);
     	
   		credentialsService.save(member.getUserCredentials());
   		return memberRepository.save(member);
@@ -57,10 +57,7 @@ public class MemberServiceImpl implements MemberService {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Member registerNewMember(Member member) throws EmailTakenException, UsernameTakenException {
-    	String username = member.getUserCredentials().getUsername();
-
-    		validateMember(member, true);
-    	    
+    		String username = member.getUserCredentials().getUsername();    	    
     		Authority authority = new Authority();
     	    authority.setUsername(username);
     	    authority.setAuthority("ROLE_USER");
@@ -69,15 +66,16 @@ public class MemberServiceImpl implements MemberService {
     	    return saveMember(member);
     }
     
-    public void validateMember(Member member, boolean isNewMember) throws EmailTakenException, UsernameTakenException {
+    public void validateMember(Member member) throws EmailTakenException, UsernameTakenException {
         String username = member.getUserCredentials().getUsername();
         String email = member.getEmail();
 
-        if (credentialsService.findByUsername(username) != null) {
-            throw new UsernameTakenException("Username is already taken: " + username);
-        }
+        // Check duplicate for the case add new member
+        if (member.getId() == null) {
+            if (credentialsService.findByUsername(username) != null) {
+                throw new UsernameTakenException("Username is already taken: " + username);
+            }
 
-        if (isNewMember) {
             if (!findByEmail(email).isEmpty()) {
                 throw new EmailTakenException("Email is already exists: " + email);
             }        	

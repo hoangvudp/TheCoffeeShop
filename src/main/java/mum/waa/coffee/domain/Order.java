@@ -4,8 +4,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,7 +31,7 @@ public class Order implements Serializable {
     private List<OrderLine> orderLines = new ArrayList<>();
 
     @OneToOne
-    private Member person;
+    private Member member;
 
     public Long getId() {
         return id;
@@ -45,16 +45,21 @@ public class Order implements Serializable {
         return orderLines;
     }
 
+<<<<<<< HEAD
     public void setOrderLines(List<OrderLine> orderLines) {
 		this.orderLines = orderLines;
 	}
 
 	public Member getPerson() {
         return person;
+=======
+    public Member getMember() {
+        return member;
+>>>>>>> 4ab4e05722faa6ed254eb76506354299537ec7ba
     }
 
-    public void setPerson(Member person) {
-        this.person = person;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public Date getOrderDate() {
@@ -73,6 +78,7 @@ public class Order implements Serializable {
         return quantity;
     }
 
+<<<<<<< HEAD
 //    public double getTotalAmount() {
 //        double totalAmount = 0;
 //
@@ -81,6 +87,17 @@ public class Order implements Serializable {
 //        }
 //        return totalAmount;
 //    }
+=======
+    public String getTotalAmount() {
+        double totalAmount = 0;
+
+        for (OrderLine ol : this.orderLines) {
+            totalAmount += ol.getSubtotal();
+        }
+        DecimalFormat format = new DecimalFormat("##.00");
+        return format.format(totalAmount);
+    }
+>>>>>>> 4ab4e05722faa6ed254eb76506354299537ec7ba
 
     public void addOrderLine(OrderLine orderLine) {
         orderLine.setOrder(this);
@@ -105,7 +122,7 @@ public class Order implements Serializable {
                 "id=" + id +
                 ", orderDate=" + orderDate +
                 ", orderLines=" + orderLines +
-                ", person=" + person +
+                ", member=" + member +
                 '}';
     }
 }

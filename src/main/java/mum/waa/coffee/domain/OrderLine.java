@@ -63,11 +63,6 @@ public class OrderLine implements Serializable {
 
     @Override
     public String toString() {
-        return "OrderLine{" +
-                "id=" + id +
-                ", quantity=" + quantity +
-                ", product=" + product +
-                ", order=" + order +
-                '}';
+        return product.getProductName() + "(" + quantity + ")";
     }
 }

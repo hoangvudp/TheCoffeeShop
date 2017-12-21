@@ -36,6 +36,11 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/placeOrder.jsp" />
 	</definition>
 	
+	<definition name="orders" extends="baseLayout">
+		<put-attribute name="title" value="Orders" />
+		<put-attribute name="body" value="/WEB-INF/jsp/orders.jsp" />
+	</definition>
+	
 	<definition name="login" extends="baseLayout">
 		<put-attribute name="title" value="Login" />
 		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />

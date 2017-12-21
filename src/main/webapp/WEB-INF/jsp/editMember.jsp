@@ -14,8 +14,10 @@
 		</tr>
 		<tr>
 			<td>User Name:</td>
-			<td colspan="2"><form:input path="userCredentials.username"
+			<td colspan="2"><form:input path="userCredentials.username" 
 					cssStyle="width:100em'" /></td>
+					
+					<%-- disabled="${not empty member.id ? 'true' : 'false'}" --%>
 		</tr>
 		<tr>
 			<td>First Name:</td>
@@ -48,6 +50,11 @@
 		<tr>
 			<td>Country:</td>
 			<td colspan="2"><form:input path="address.country"
+					cssStyle="width:20em'" /></td>
+		</tr>
+		<tr>
+			<td>Zip Code:</td>
+			<td colspan="2"><form:input path="address.zipcode"
 					cssStyle="width:20em'" /></td>
 		</tr>
 		<tr>
