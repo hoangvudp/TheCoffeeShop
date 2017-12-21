@@ -25,6 +25,7 @@
 <br>
 <div class="navigationBar">
   	<a href="<spring:url value="/"/>"><spring:message code="navigation.home"/></a>&nbsp;&nbsp;
+  	<!-- a href="<spring:url value="/meal"/>">Build Meal</a>&nbsp;&nbsp;-->
   	<security:authorize access="isAuthenticated()">
 		<a href="<spring:url value="/placeOrder"/>"><spring:message code="navigation.placeOrder"/></a>&nbsp;&nbsp;
 	</security:authorize>
