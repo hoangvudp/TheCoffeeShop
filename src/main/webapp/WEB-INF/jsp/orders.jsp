@@ -35,7 +35,12 @@
 					<td class='thtdData'>${order.id}</td>					
 					<td class='thtdData'>${order.orderDate}</td>
 					<td class='thtdData'>${order.member.firstName} ${order.member.lastName}</td>
-					<td class='thtdData'>${order.totalAmount}</td>
+					<c:set var="total" scope="page" value="0.0"/>
+					<c:forEach var="orderLine" items="${order.orderLines}">
+					    <c:set var="total" scope="page" value="${total + (orderLine.product.price * orderLine.quantity)}" />					  
+					</c:forEach>
+					
+					<td class='thtdData'>${total}</td>
 					<td class='thtdData'>
 						<ul>
 							<c:forEach items="${order.orderLines}" var="orderLine">

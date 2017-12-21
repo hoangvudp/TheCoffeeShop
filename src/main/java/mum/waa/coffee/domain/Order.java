@@ -45,17 +45,12 @@ public class Order implements Serializable {
         return orderLines;
     }
 
-<<<<<<< HEAD
     public void setOrderLines(List<OrderLine> orderLines) {
 		this.orderLines = orderLines;
 	}
 
-	public Member getPerson() {
-        return person;
-=======
     public Member getMember() {
         return member;
->>>>>>> 4ab4e05722faa6ed254eb76506354299537ec7ba
     }
 
     public void setMember(Member member) {
@@ -78,26 +73,15 @@ public class Order implements Serializable {
         return quantity;
     }
 
-<<<<<<< HEAD
-//    public double getTotalAmount() {
+//    public String getTotalAmount() {
 //        double totalAmount = 0;
 //
 //        for (OrderLine ol : this.orderLines) {
 //            totalAmount += ol.getSubtotal();
 //        }
-//        return totalAmount;
+//        DecimalFormat format = new DecimalFormat("##.00");
+//        return format.format(totalAmount);
 //    }
-=======
-    public String getTotalAmount() {
-        double totalAmount = 0;
-
-        for (OrderLine ol : this.orderLines) {
-            totalAmount += ol.getSubtotal();
-        }
-        DecimalFormat format = new DecimalFormat("##.00");
-        return format.format(totalAmount);
-    }
->>>>>>> 4ab4e05722faa6ed254eb76506354299537ec7ba
 
     public void addOrderLine(OrderLine orderLine) {
         orderLine.setOrder(this);

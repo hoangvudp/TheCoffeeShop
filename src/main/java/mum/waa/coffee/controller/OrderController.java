@@ -56,7 +56,7 @@ public class OrderController {
 		}
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserCredentials userCredentials = userRepository.findByUsername(user.getUsername());
-		order.setPerson(userCredentials.getMember());
+		order.setMember(userCredentials.getMember());
 		for (int i = 0; i < order.getOrderLines().size(); i++) {
 			order.getOrderLines().get(i).setOrder(order);
 		}

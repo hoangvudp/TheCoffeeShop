@@ -63,7 +63,7 @@ public class PlaceOrderController {
 		
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserCredentials userCredentials = userRepository.findByUsername(user.getUsername());
-		order.setPerson(userCredentials.getMember());
+		order.setMember(userCredentials.getMember());
 		orderService.save(order);
 		return "redirect:/";
 	}
@@ -76,5 +76,13 @@ public class PlaceOrderController {
 		List<OrderLine> orderLineList = (List<OrderLine>) model.asMap().get("orderLineList");
 		orderLineList.add(orderLine);
 		return orderLine;
+	}
+	
+	@RequestMapping(value="/all", method=RequestMethod.GET)
+	public String showAllOrders(Model model){
+
+		model.addAttribute("products", productService.getAllProducts());
+		model.addAttribute("orders", orderService.findAll());
+		return "orders";
 	}
 }
