@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         UserCredentials credentials = userCredentialsRepository.findByUsername(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Authority auth : credentials.getAuthority()) {
+        for (Authority auth : credentials.getAuthorityList()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(auth.getAuthority()));
         }
 

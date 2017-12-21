@@ -26,9 +26,8 @@
 				<th class='thtdData'><spring:message code="members.table.header.lastName"/></th>
 				<th class='thtdData'><spring:message code="members.table.header.email"/></th>
 				<th class='thtdData'><spring:message code="members.table.header.phone"/></th>
-				<th class='thtdData'><spring:message code="members.table.header.city"/></th>
-				<th class='thtdData'><spring:message code="members.table.header.state"/></th>
-				<th class='thtdData'><spring:message code="members.table.header.country"/></th>
+				<th class='thtdData'><spring:message code="members.table.header.address"/></th>
+				<th class='thtdData'><spring:message code="members.table.header.roles"/></th>
 				<security:authorize access="hasRole('ROLE_ADMIN')">
 					<th class='thtdData'><spring:message code="members.table.header.actions"/></th>
 				</security:authorize>
@@ -45,9 +44,8 @@
 					<td class='thtdData'>${member.lastName}</td>
 					<td class='thtdData'>${member.email}</td>
 					<td class='thtdData'>${member.phone}</td>
-					<td class='thtdData'>${member.address.city}</td>
-					<td class='thtdData'>${member.address.state}</td>
-					<td class='thtdData'>${member.address.country}</td>
+					<td class='thtdData'>${member.address}</td>
+					<td class='thtdData'>${member.userCredentials.authorities}</td>
 					<security:authorize access="hasRole('ROLE_ADMIN')">
 					  <td class='thtdData'>
 					  <security:authorize access="isAuthenticated()">

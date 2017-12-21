@@ -2,6 +2,7 @@ package mum.waa.coffee.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -23,7 +24,6 @@ public class UserCredentials {
 	@NotEmpty
 	String username;
 	
-//	@Column(nullable = false)
 	String password;
 
 	@Transient
@@ -38,7 +38,7 @@ public class UserCredentials {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "username")
-	List<Authority> authority = new ArrayList<Authority>();
+	List<Authority> authrorityList = new ArrayList<Authority>();
 
 	@OneToOne(mappedBy = "userCredentials")
 	Member member;
@@ -83,16 +83,20 @@ public class UserCredentials {
 		this.enabled = enabled;
 	}
 
-	public List<Authority> getAuthority() {
-		return authority;
+	public List<Authority> getAuthorityList() {
+		return authrorityList;
 	}
 
-	public void setAuthority(List<Authority> authority) {
-		this.authority = authority;
+	public void setAuthorityList(List<Authority> authorityList) {
+		this.authrorityList = authorityList;
+	}
+	
+	public String getAuthorities() {
+		return authrorityList.stream().map(a -> a.getAuthority()).collect(Collectors.joining(" "));
 	}
 	
 	public void addAuthority(Authority authority) {
-		this.authority.add(authority);
+		this.authrorityList.add(authority);
 	}
 	
 	public Member getMember() {
