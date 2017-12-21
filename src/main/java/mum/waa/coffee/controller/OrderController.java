@@ -21,7 +21,7 @@ import mum.waa.coffee.service.ProductService;
 import mum.waa.coffee.domain.*;
 
 @Controller
-@SessionAttributes("person")
+@SessionAttributes({"person", "productList"})
 public class OrderController {
 	
 	@Autowired
