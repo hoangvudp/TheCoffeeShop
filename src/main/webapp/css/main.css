@@ -28,11 +28,16 @@ div.languageBar {
 }
 
 div.navigationBar {
-	float: left;
+	float: right;
 }
 
 div.authenticationBar {
 	float: right;
+	clear: left;
+}
+
+.floatLeft {
+	float: left;
 }
 
 #logoutForm {

@@ -8,11 +8,6 @@
 <title>Products</title>
 </head>
 <body>
-	<security:authorize access="hasRole('ROLE_ADMIN')">
-		<a href="<spring:url value="/products/add"/>"><spring:message code="products.addProduct"/></a>
-	</security:authorize>
-	<br>
-	<br>
 	<table class='tbData'>
 		<col>
 		<col>
@@ -34,7 +29,7 @@
 				<tr class="dataRowHover">
 					<td class='thtdData'>${order.id}</td>					
 					<td class='thtdData'>${order.orderDate}</td>
-					<td class='thtdData'>${order.member.firstName} ${order.member.lastName}</td>
+					<td class='thtdData'>${order.member.userCredentials.username}</td>
 					<c:set var="total" scope="page" value="0.0"/>
 					<c:forEach var="orderLine" items="${order.orderLines}">
 					    <c:set var="total" scope="page" value="${total + (orderLine.product.price * orderLine.quantity)}" />					  

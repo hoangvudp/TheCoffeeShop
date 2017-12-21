@@ -78,7 +78,7 @@ public class PlaceOrderController {
 		return orderLine;
 	}
 	
-	@RequestMapping(value="/all", method=RequestMethod.GET)
+	@RequestMapping(value="", method=RequestMethod.GET)
 	public String showAllOrders(Model model){
 
 		model.addAttribute("products", productService.getAllProducts());

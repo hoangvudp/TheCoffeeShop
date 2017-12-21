@@ -32,7 +32,7 @@
 					<form:errors path="userCredentials.inputPassword" />
 				</div>
 				
-				<form:input placeHolder="${password}" id="password" path="userCredentials.inputPassword" type="text" />
+				<form:input placeHolder="${password}" id="password" path="userCredentials.inputPassword" type="password" />
 			</div>
 
 			<div class="input-group">
@@ -42,7 +42,7 @@
 					<form:errors path="userCredentials.verifyPassword" />
 				</div>
 				
-				<form:input placeHolder="${verifyPassword}" id="verifyPassword" path="userCredentials.verifyPassword" type="text" />
+				<form:input placeHolder="${verifyPassword}" id="verifyPassword" path="userCredentials.verifyPassword" type="password" />
 			</div>
 
 			<div class="input-group">

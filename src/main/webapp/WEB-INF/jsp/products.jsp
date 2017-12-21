@@ -9,7 +9,9 @@
 </head>
 <body>
 	<security:authorize access="hasRole('ROLE_ADMIN')">
-		<a href="<spring:url value="/products/add"/>"><spring:message code="products.addProduct"/></a>
+		<div class="floatLeft">
+			<a href="<spring:url value="/products/add"/>"><spring:message code="products.addProduct"/></a>
+		</div>
 	</security:authorize>
 	<br>
 	<br>
