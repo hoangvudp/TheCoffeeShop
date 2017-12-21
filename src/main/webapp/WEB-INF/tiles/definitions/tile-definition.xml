@@ -32,8 +32,8 @@
 	</definition>
 	
 	<definition name="placeOrder" extends="baseLayout">
-		<put-attribute name="title" value="orders" />
-		<put-attribute name="body" value="/WEB-INF/jsp/order.jsp" />
+		<put-attribute name="title" value="Place Order" />
+		<put-attribute name="body" value="/WEB-INF/jsp/placeOrder.jsp" />
 	</definition>
 	
 	<definition name="login" extends="baseLayout">

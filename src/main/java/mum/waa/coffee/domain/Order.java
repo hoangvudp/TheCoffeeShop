@@ -4,14 +4,21 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "Orders")
-public class Order {
-    @Id
+public class Order implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4558537476331845667L;
+
+	@Id
     @GeneratedValue
     private Long id;
 
@@ -38,7 +45,11 @@ public class Order {
         return orderLines;
     }
 
-    public Member getPerson() {
+    public void setOrderLines(List<OrderLine> orderLines) {
+		this.orderLines = orderLines;
+	}
+
+	public Member getPerson() {
         return person;
     }
 
@@ -62,14 +73,14 @@ public class Order {
         return quantity;
     }
 
-    public double getTotalAmount() {
-        double totalAmount = 0;
-
-        for (OrderLine ol : this.orderLines) {
-            totalAmount += ol.getSubtotal();
-        }
-        return totalAmount;
-    }
+//    public double getTotalAmount() {
+//        double totalAmount = 0;
+//
+//        for (OrderLine ol : this.orderLines) {
+//            totalAmount += ol.getSubtotal();
+//        }
+//        return totalAmount;
+//    }
 
     public void addOrderLine(OrderLine orderLine) {
         orderLine.setOrder(this);

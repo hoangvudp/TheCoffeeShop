@@ -1,10 +1,12 @@
 package mum.waa.coffee.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 
 @Entity
-public class OrderLine {
+public class OrderLine implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
@@ -51,13 +53,13 @@ public class OrderLine {
         this.order = order;
     }
 
-    public double getSubtotal() {
-        return quantity * product.getPrice().doubleValue();
-    }
+//    public double getSubtotal() {
+//        return quantity * product.getPrice().doubleValue();
+//    }
 
-    public double getPrice() {
-        return product.getPrice().doubleValue();
-    }
+//    public double getPrice() {
+//        return product.getPrice().doubleValue();
+//    }
 
     @Override
     public String toString() {

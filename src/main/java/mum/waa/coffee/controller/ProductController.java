@@ -69,7 +69,6 @@ public class ProductController {
 			return "editProduct";
 		}
 		Product savedProduct = productService.save(product);
-		boolean isAdd = product.getId() == null;
 		
 		String[] suppressedFields = result.getSuppressedFields();
 
@@ -92,8 +91,6 @@ public class ProductController {
 		}
 		
 		
-		if (isAdd) {
-		}
 		return "redirect:/products";
 	}
 	
