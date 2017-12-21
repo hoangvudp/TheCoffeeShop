@@ -65,7 +65,7 @@ public class PlaceOrderController {
 		UserCredentials userCredentials = userRepository.findByUsername(user.getUsername());
 		order.setMember(userCredentials.getMember());
 		orderService.save(order);
-		return "redirect:/";
+		return "redirect:/orders";
 	}
 	
 	@RequestMapping(value = "/addProductToOrder", method = RequestMethod.GET)
