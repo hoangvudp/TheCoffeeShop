@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import mum.waa.coffee.domain.Member;
+import mum.waa.coffee.exception.EmailTakenException;
 import mum.waa.coffee.exception.MemberNotFoundException;
+import mum.waa.coffee.exception.UsernameTakenException;
 import mum.waa.coffee.service.MemberService;
 
 @Controller
@@ -36,7 +38,7 @@ public class MemberController {
 		return "members";
 	}
 
-	@RequestMapping(value = "{id}")
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	public String getMemberById(@PathVariable("id") Long id, Model model) {
 		Member member = memberService.findById(id);
 		if (member == null) {
@@ -47,53 +49,47 @@ public class MemberController {
 		return "member";
 	}
 
-	@RequestMapping(value = "/add")
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addMember(Model model, Member member) {
-		return "member";
+		return "editMember";
 	}
 
 	@RequestMapping(value = { "/add", "/edit/{id}" }, method = RequestMethod.POST)
 	public String saveMember(@Valid @ModelAttribute("member") Member member, BindingResult result, Model model) {
-		if (result.hasErrors()) {
-			return "member";
+		boolean hasError = result.hasErrors();
+		
+		if (hasError) {
+			return "editMember";
 		}
 
-		Member savedMember = memberService.saveMember(member);
-		boolean isAdd = member.getId() == null;
-
-		String[] suppressedFields = result.getSuppressedFields();
-
-		if (suppressedFields.length > 0) {
-			throw new RuntimeException("Attempting to bind disallowed fields: "
-					+ StringUtils.arrayToCommaDelimitedString(suppressedFields));
+		try {
+			memberService.saveMember(member);
+		} catch (EmailTakenException e) {
+			hasError = true;
+			result.rejectValue("email", "EmailAlreadyTaken", "Email is already taken");
+		} catch (UsernameTakenException e) {
+			hasError = true;
+			result.rejectValue("userCredentials.username", "UsernameAlreadyTaken", "User Name is already taken");
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
-
-		// MultipartFile productImage = member.getProductImage();
-		// String rootDirectory = servletContext.getRealPath("/");
-		//
-		// // isEmpty means file exists BUT NO Content
-		// if (productImage != null && !productImage.isEmpty()) {
-		// try {
-		// productImage.transferTo(new File(rootDirectory + "\\images\\" +
-		// savedProduct.getId() + ".jpeg"));
-		// } catch (Exception e) {
-		// throw new RuntimeException("Product Image saving failed", e);
-		// }
-		// }
-		//
-		// if (isAdd) {
-		// }
+		
+		if (hasError) {
+			model.addAttribute("member", member);
+			return "editMember";
+		}
+		
 		return "redirect:/members";
 	}
 
-	@RequestMapping(value = "/edit/{id}")
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editMember(@PathVariable("id") Long id, Model model) {
 		Member member = memberService.findById(id);
 		if (member == null) {
 			throw new MemberNotFoundException(id, null);
 		}
 		model.addAttribute("member", member);
-		return "member";
+		return "editMember";
 	}
 
 	@RequestMapping(value = "/delete/{id}")

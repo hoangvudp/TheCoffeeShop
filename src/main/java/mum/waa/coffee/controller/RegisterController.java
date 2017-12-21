@@ -36,7 +36,7 @@ public class RegisterController {
 	public String register(@Valid @ModelAttribute("member") Member member, BindingResult result, Model model,
 			HttpServletRequest request) {
 		UserCredentials credentials = member.getUserCredentials();
-		 if (!credentials.getPassword().equals(credentials.getVerifyPassword())) {
+		 if (!credentials.getInputPassword().equals(credentials.getVerifyPassword())) {
 			 result.rejectValue("userCredentials.verifyPassword", "PasswordConfirmNotMatch", "Password Confirm does not match");
 		 }
 

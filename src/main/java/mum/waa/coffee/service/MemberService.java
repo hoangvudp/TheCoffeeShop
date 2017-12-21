@@ -10,7 +10,7 @@ public interface MemberService {
 
 	public List<Member> getAllMembers();
 
-	public Member saveMember(Member member);
+	public Member saveMember(Member member) throws EmailTakenException, UsernameTakenException;
 
 	public List<Member> findByEmail(String email);
 
