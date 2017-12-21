@@ -24,8 +24,12 @@ public class UserCredentialsServiceImpl implements UserCredentialsService {
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void save(UserCredentials credentials) {
-		String encodedPassword = passwordEncoder.encode(credentials.getPassword());
-		credentials.setPassword(encodedPassword);
+		String inputPassword = credentials.getInputPassword();
+		
+		if (inputPassword != null && inputPassword.length() > 0) {
+			String encodedPassword = passwordEncoder.encode(inputPassword);
+			credentials.setPassword(encodedPassword);
+		}
 
 		userCredentialsRepository.save(credentials);
 	}

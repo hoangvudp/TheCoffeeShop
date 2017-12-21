@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mum.waa.coffee.domain.Order;
-import mum.waa.coffee.domain.Person;
+import mum.waa.coffee.domain.Member;
 import mum.waa.coffee.domain.Product;
 import mum.waa.coffee.repository.OrderRepository;
 import mum.waa.coffee.service.OrderService;
@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.findDistinctOrderByOrderLines_Product(product);
     }
 
-    public List<Order> findByPerson(Person person) {
+    public List<Order> findByPerson(Member person) {
         return orderRepository.findOrderByPerson(person);
     }
 

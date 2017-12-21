@@ -1,7 +1,7 @@
 package mum.waa.coffee.repository;
 
 import mum.waa.coffee.domain.Order;
-import mum.waa.coffee.domain.Person;
+import mum.waa.coffee.domain.Member;
 import mum.waa.coffee.domain.Product;
 
 import java.util.Date;
@@ -13,7 +13,7 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
 
     List<Order> findDistinctOrderByOrderLines_Product(Product product);
 
-    List<Order> findOrderByPerson(Person person);
+    List<Order> findOrderByPerson(Member person);
 
     List<Order> findOrderByOrderDateBetween(Date minDate, Date maxDate);
 

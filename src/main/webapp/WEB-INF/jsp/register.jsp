@@ -29,10 +29,10 @@
 				<spring:message code="password" var="password" />
 				<label for="password">${password}</label>
 				<div class="errors">
-					<form:errors path="userCredentials.password" />
+					<form:errors path="userCredentials.inputPassword" />
 				</div>
 				
-				<form:input placeHolder="${password}" id="password" path="userCredentials.password" type="text" />
+				<form:input placeHolder="${password}" id="password" path="userCredentials.inputPassword" type="text" />
 			</div>
 
 			<div class="input-group">
@@ -60,7 +60,7 @@
 
 			<div class="form-group">
 				<br>
-				Already have account? <a href="/login">Login Here</a>
+				Already have account? <a href="<spring:url value="/login"></spring:url>">Login</a>
 			</div>
 		</form:form>
 	</div>

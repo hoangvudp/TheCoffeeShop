@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import mum.waa.coffee.domain.Order;
-import mum.waa.coffee.domain.Person;
+import mum.waa.coffee.domain.Member;
 import mum.waa.coffee.domain.Product;
 
 public interface OrderService {
@@ -15,7 +15,7 @@ public interface OrderService {
 
     public List<Order> findByProduct(Product product);
 
-    public List<Order> findByPerson(Person person);
+    public List<Order> findByPerson(Member person);
 
     public List<Order> findByDate(Date minDate, Date maxDate);
 

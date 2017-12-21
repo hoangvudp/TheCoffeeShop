@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -22,19 +23,26 @@ public class UserCredentials {
 	@NotEmpty
 	String username;
 	
-	@Column(nullable = false)
-	@NotEmpty
+//	@Column(nullable = false)
 	String password;
+
+	@Transient
+	@NotEmpty(groups = UserCredentials.class)
+	String inputPassword;
 	
 	@Transient
 	@NotEmpty(groups = UserCredentials.class)
 	String verifyPassword;
+	
 	Boolean enabled;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "username")
 	List<Authority> authority = new ArrayList<Authority>();
 
+	@OneToOne(mappedBy = "userCredentials")
+	Member member;
+	
 	public String getUsername() {
 		return username;
 	}
@@ -51,6 +59,14 @@ public class UserCredentials {
 		this.password = password;
 	}
 
+	public String getInputPassword() {
+		return inputPassword;
+	}
+
+	public void setInputPassword(String inputPassword) {
+		this.inputPassword = inputPassword;
+	}
+	
 	public String getVerifyPassword() {
 		return verifyPassword;
 	}
@@ -77,5 +93,13 @@ public class UserCredentials {
 	
 	public void addAuthority(Authority authority) {
 		this.authority.add(authority);
+	}
+	
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
 	}
 }
