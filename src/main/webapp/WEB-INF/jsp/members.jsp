@@ -37,9 +37,7 @@
 			<c:forEach items="${members}" var="member">
 				<tr class='dataRowHover'>
 					<td class='thtdData'>${member.id}</td>
-					<td class='thtdData'>
-						<a href="<spring:url value='/members/${member.id}'/>">${member.userCredentials.username}</a>
-					</td>
+					<td class='thtdData'>${member.userCredentials.username}</td>
 					<td class='thtdData'>${member.firstName}</td>
 					<td class='thtdData'>${member.lastName}</td>
 					<td class='thtdData'>${member.email}</td>

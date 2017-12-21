@@ -14,9 +14,10 @@
 		</tr>
 		<tr>
 			<td>User Name:</td>
-			<td colspan="2"><form:input path="userCredentials.username"
-					disabled="${not empty member.id ? 'true' : 'false'}"
+			<td colspan="2"><form:input path="userCredentials.username" 
 					cssStyle="width:100em'" /></td>
+					
+					<%-- disabled="${not empty member.id ? 'true' : 'false'}" --%>
 		</tr>
 		<tr>
 			<td>First Name:</td>
