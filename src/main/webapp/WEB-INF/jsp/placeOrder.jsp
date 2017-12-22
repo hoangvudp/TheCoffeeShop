@@ -4,7 +4,7 @@
 
 <script type="text/javascript" src="<spring:url value="/js/ajax.js"/>"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-
+<h3>${successMessage}</h3>
 	<form:form modelAttribute="order" action="add" method="POST">
 		<p>
             <label for="firstName">Date: </label>

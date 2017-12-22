@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 import mum.waa.coffee.domain.Order;
 import mum.waa.coffee.domain.OrderLine;
 import mum.waa.coffee.domain.Product;
+import mum.waa.coffee.domain.ProductCategory;
 import mum.waa.coffee.domain.UserCredentials;
+import mum.waa.coffee.exception.ProductNotFoundException;
 import mum.waa.coffee.repository.UserCredentialsRepository;
 import mum.waa.coffee.service.OrderService;
 import mum.waa.coffee.service.ProductService;
@@ -61,11 +64,13 @@ public class PlaceOrderController {
 			order.getOrderLines().get(i).setOrder(order);
 		}
 		
+		model.addAttribute("successMessage", "Order is successfully done!");
+		
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserCredentials userCredentials = userRepository.findByUsername(user.getUsername());
 		order.setMember(userCredentials.getMember());
 		orderService.save(order);
-		return "redirect:/";
+		return "redirect:/orders/add";
 	}
 	
 	@RequestMapping(value = "/addProductToOrder", method = RequestMethod.GET)
@@ -84,5 +89,15 @@ public class PlaceOrderController {
 		model.addAttribute("products", productService.getAllProducts());
 		model.addAttribute("orders", orderService.findAll());
 		return "orders";
+	}
+	
+	@RequestMapping(value="/edit/{id}")
+	public String editProduct(@PathVariable("id") Long id, Model model, ProductCategory productCategory) {
+		Product product = productService.getProduct(id);
+		if(product == null) {
+			throw new ProductNotFoundException(id, null);
+		}
+		model.addAttribute("product", product);
+		return "editProduct";
 	}
 }
