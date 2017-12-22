@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
-<h3>${successMessage}</h3>
+
 <form:form modelAttribute="order" action="placeOrder" method="post">
 					<fieldset>
 						<legend> Order</legend> <br />
